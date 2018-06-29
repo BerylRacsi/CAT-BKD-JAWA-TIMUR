@@ -28,6 +28,6 @@ class HomeController extends Controller
 
     public function start()
     {
-        return view('pages.start');
+        return view('pages.ujian');
     }
 }

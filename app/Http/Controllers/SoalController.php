@@ -44,6 +44,7 @@ class SoalController extends Controller
         $soal->opsi2 = $request->input('opsi2');
         $soal->opsi3 = $request->input('opsi3');
         $soal->opsi4 = $request->input('opsi4');
+        $soal->opsi5 = $request->input('opsi5');
         $soal->jawaban = $request->input('jawaban');
         $soal->image = $request->input('image');
         $soal->save();
@@ -90,6 +91,7 @@ class SoalController extends Controller
         $soal->opsi2 = $request->input('opsi2');
         $soal->opsi3 = $request->input('opsi3');
         $soal->opsi4 = $request->input('opsi4');
+        $soal->opsi5 = $request->input('opsi5');
         $soal->jawaban = $request->input('jawaban');
         $soal->image = $request->input('image');
         $soal->save();

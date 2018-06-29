@@ -16,9 +16,9 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        <div class="container">
+      
         @yield('content')
-        </div>
+    
     </div>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top" >

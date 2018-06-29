@@ -10,7 +10,7 @@
           <i class="fa fa-table"></i> Daftar Soal Ujian CAT</div>
         <div class="card-body">
       
-        @if(count($soals)>1)
+        @if(count($soals)>0)
       
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -23,6 +23,7 @@
                   <th>Opsi 2</th>
                   <th>Opsi 3</th>
                   <th>Opsi 4</th>
+                  <th>Opsi 5</th>
                   <th>Kunci</th>
                   <th>PATH Gambar</th>
                   <th>Aksi</th>
@@ -38,6 +39,7 @@
                   <td>{{$soal->opsi2}}</td>
                   <td>{{$soal->opsi3}}</td>
                   <td>{{$soal->opsi4}}</td>
+                  <td>{{$soal->opsi5}}</td>
                   <td>{{$soal->jawaban}}</td>
                   <td>{{$soal->image}}</td>
                   <td>

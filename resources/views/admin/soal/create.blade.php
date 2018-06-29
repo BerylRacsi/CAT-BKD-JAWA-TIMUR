@@ -42,7 +42,15 @@
 			    	{{Form::text('opsi4','',['class' => 'form-control','placeholder' => 'Jawaban D'])}}
 			    </div>
 			  </div>
+			  <br>
+			  <center>
+			  	<div class="col-6">
+			    	{{Form::label('opsi5','Pilihan Jawaban E')}}
+			    	{{Form::text('opsi5','',['class' => 'form-control','placeholder' => 'Jawaban E'])}}
+			    </div>
+			  </center>
 			</div>
+			<br>
 			<br>
 			
 			<center>

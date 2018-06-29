@@ -21,6 +21,7 @@ class CreateSoalsTable extends Migration
             $table->string('opsi2');
             $table->string('opsi3');
             $table->string('opsi4');
+            $table->string('opsi5');
             $table->string('jawaban');
             $table->string('image');
             $table->timestamps();
