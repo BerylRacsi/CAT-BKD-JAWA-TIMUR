@@ -12,6 +12,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <div id="app">
@@ -21,7 +23,7 @@
     
     </div>
 
-    <footer class="pt-4 my-md-5 pt-md-5 border-top" >
+    <footer class="border-top" style="padding-top: 2em; padding-bottom: 1em;">
         <div class="container text-center">
           <span class="text-bold">Perencanaan Pengadaan Pengolahan Data & SI - BKD &copy 2018</span>
         </div>

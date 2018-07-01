@@ -27,16 +27,21 @@
                         @if (Auth::guest())
                            
                         @else
+                        <li class="nav-item">
+                            <span class="navbar-text" style="font-weight: bold;">
+                                Welcome, {{ Auth::user()->name }}
+                            </span>
+                        </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-user"></i>
+                                </a>   
 
-                                <ul class="dropdown-menu" role="menu">
+                                <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                     <li>
                                         <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+                                                     <i class="fa fa-sign-out"></i>
                                             Logout
                                         </a>
 
