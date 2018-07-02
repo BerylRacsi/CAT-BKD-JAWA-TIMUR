@@ -21,7 +21,11 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         return view('admin.index');
+    }
+    public function hasil()
+    {
+        return view('admin.hasil');
     }
 }

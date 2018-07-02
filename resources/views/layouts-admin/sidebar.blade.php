@@ -1,11 +1,11 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="{{ url('/') }}">
+          <a class="nav-link" href="{{ url('/admin/') }}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Peserta">
-          <a class="nav-link" href="{{ url('peserta') }}">
+          <a class="nav-link" href="{{ url('admin/peserta') }}">
             <i class="fa fa-fw fa-male"></i>
             <span class="nav-link-text">Peserta</span>
           </a>
@@ -17,7 +17,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Hasil">
-          <a class="nav-link" href="{{ url('hasil') }}">
+          <a class="nav-link" href="{{ url('admin/hasil') }}">
             <i class="fa fa-fw fa-list-ol"></i>
             <span class="nav-link-text">Hasil</span>
           </a>

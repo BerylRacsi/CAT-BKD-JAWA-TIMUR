@@ -1,7 +1,7 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <span class="navbar-text">
-          Welcome, Admin
+          Welcome, {{Auth::user()->name}}
           </span>
         </li>
         <li class="nav-item dropdown">

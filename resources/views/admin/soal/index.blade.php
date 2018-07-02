@@ -2,6 +2,11 @@
 
 @section('title', '- Soal')
 
+@section('csslink')
+<!-- Page level plugin CSS-->
+<link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+@endsection
+
 @section('content')
 
       <div class="card mb-3">
@@ -68,5 +73,11 @@
 @endsection
 
 @section('jscript')
-<script src="/js/ellipsis.js"></script>
+  <!-- Page level plugin JavaScript-->
+  <script src="/vendor/datatables/jquery.dataTables.js"></script>
+  <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
+  <!-- Custom scripts for this page-->
+  <script src="/js/sb-admin-datatables.min.js"></script>
+  <script src="/js/sb-admin-charts.min.js"></script>
+  <script src="/js/ellipsis.js"></script>
 @endsection
