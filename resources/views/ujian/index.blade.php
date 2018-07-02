@@ -18,7 +18,7 @@
     <div class="row" style="padding-left: 2em;">
               <div class="col-3">
                 <ul class="list-unstyled text-left" style="font-weight: 500;">
-                  <li>Nama Peserta</li>
+                  <li>Nama</li>
                   <li>Alamat Email</li>
                 </ul>
               </div>
@@ -62,7 +62,9 @@
 </div>
 </div> 
   <div class="text-center" style="padding-top: 2em;">
-        <button class="btn btn-lg btn-outline-primary mr-sm-1 " type="submit">Mulai Tes</button>
+        
+          <a href="/ujian/1" class="btn btn-lg btn-outline-primary mr-sm-1">Mulai Tes</a>
+  
   </div>  
 </div>
 @endsection 

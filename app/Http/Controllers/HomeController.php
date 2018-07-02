@@ -23,11 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.index');
-    }
-
-    public function start()
-    {
-        return view('pages.ujian');
+        return redirect()->route('ujian.index');
     }
 }

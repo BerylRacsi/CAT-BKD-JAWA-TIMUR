@@ -62,30 +62,30 @@
 	
 		<div class="card text-left">
 	  		<div class="card-body">
-	    		<h5 class="card-title">Soal No. 1</h5>
-	    		<p class="card-text">Kategori : Tes Wawasan Kebangsaan</p>
+	    		<h5 class="card-title">Soal No. {{$soals->id}}</h5>
+	    		<p class="card-text">Kategori : {{$soals->kategori}}</p>
 	  		</div>
 	  		
 		</div>
 		<br>
 		<div class="card text-left">
 	  		<div class="card-body">
-	    		<p class="card-text">Sikap dan perilaku warga Negara yang di jiwai oleh kecintaannya kepada Negara Kesatuan Republik Indonesia yang berdasarkan pancasila dan UUD 1945 dalam menjamin kelangsungan hidup bangsa dan Negara merupakan pengertian dari ....  </p>
+	    		<p class="card-text">{{$soals->deskripsi}}</p>
 
 	    		<div class="radio">
-				  <label><input type="radio" name="optradio"> A. Ketahanan Nasional</label>
+				  <label><input type="radio" name="optradio"> A. {{$soals->opsi1}}</label>
 				</div>
 				<div class="radio">
-				  <label><input type="radio" name="optradio"> B. Nasionalisme</label>
+				  <label><input type="radio" name="optradio"> B. {{$soals->opsi2}}</label>
 				</div>
 				<div class="radio">
-				  <label><input type="radio" name="optradio"> C. Wajib Militer</label>
+				  <label><input type="radio" name="optradio"> C. {{$soals->opsi3}}</label>
 				</div>
 				<div class="radio">
-				  <label><input type="radio" name="optradio"> D. Chauvinisme</label>
+				  <label><input type="radio" name="optradio"> D. {{$soals->opsi4}}</label>
 				</div>
 				<div class="radio">
-				  <label><input type="radio" name="optradio"> E. Bela Negara</label>
+				  <label><input type="radio" name="optradio"> E. {{$soals->opsi5}}</label>
 				</div>
 	  		</div>
 
@@ -94,8 +94,17 @@
 		<br>
 		<br>
 	  		<center>
-	  			<button class="btn btn-outline-secondary mr-3" style="font-weight: 500;"><i class="fa fa-chevron-circle-left"></i> Sebelumnya</button>
-	  			<button class="btn btn-outline-secondary ml-3" style="font-weight: 500;">Selanjutnya <i class="fa fa-chevron-circle-right"></i></button>
+	  			@if ($soals->id == 1)
+	  			<a href="#" class="btn btn-outline-secondary mr-3" style="font-weight: 500; "disabled><i class="fa fa-chevron-circle-left"></i> Sebelumnya</a>
+	  			@else
+	  			<a href="/ujian/{{$previous}}" class="btn btn-outline-secondary mr-3" style="font-weight: 500;"><i class="fa fa-chevron-circle-left"></i> Sebelumnya</a>
+	  			@endif
+
+	  			@if ($soals->id == 100)
+	  			<a href="/ujian/{{$next}}" class="btn btn-outline-secondary ml-3" style="font-weight: 500;" disabled>Selanjutnya <i class="fa fa-chevron-circle-right"></i></a>
+	  			@else
+	  			<a href="/ujian/{{$next}}" class="btn btn-outline-secondary ml-3" style="font-weight: 500;">Selanjutnya <i class="fa fa-chevron-circle-right"></i></a>
+	  			@endif
 	  		</center>
 
 </div>
