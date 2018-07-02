@@ -1,21 +1,24 @@
 @extends('layouts-admin.master')
 
+@section('title', '- Peserta')
+
 @section('csslink')
 <!-- Page level plugin CSS-->
 <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 @endsection
 
-@section('title', '- Peserta')
 
 @section('content')
 
   <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <button type="button" class="btn btn-success float-right btn-sm" data-toggle="modal" data-target="#tambahModal">Tambah Peserta</button>
           <i class="fa fa-table"></i> Daftar Peserta Ujian CAT
         </div>
         <div class="card-body">
+
+        @if(count($users)>0)
+
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
@@ -23,40 +26,35 @@
                   <th>ID</th>
                   <th>Nama</th>
                   <th>Email</th>
-                  <th>Alamat</th>
-                  <th>Telpon</th>
+                  <th>Tgl Daftar</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
-              <tfoot>
-                <tr>
-                  <th>ID</th>
-                  <th>Nama</th>
-                  <th>Email</th>
-                  <th>Alamat</th>
-                  <th>Telpon</th>
-                  <th>Aksi</th>
-                </tr>
-              </tfoot>
               <tbody>
+                @foreach($users as $user)
                 <tr>
-                  <td>5115100</td>
-                  <td>Racsi Beryl W</td>
-                  <td>berylracsi@gmail.com</td>
-                  <td>Keputih GG 1 C</td>
-                  <td>0892837232</td>
+                  <td>{{$user->id}}</td>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->created_at}}</td>
                   <td>
-                    <a type="button" class="btn btn-warning btn-sm" href="/peserta/1/edit">Edit</a>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPeserta">Hapus</button>
+                    <a type="button" class="btn btn-warning btn-sm btn-block" href="/admin/peserta/{{$user->id}}/edit">Edit</a>
+                    {!!Form::open(['action' => ['PesertaController@destroy',$user->id],'method' => 'POST']) !!}
+                        {{Form::hidden('_method','DELETE')}}
+                        {{Form::submit('Delete',['class' => 'btn btn-danger btn-sm btn-block'])}}
+                    {!!Form::close()!!}
                   </td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Diupdate yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Diupdate </div>
+        @else
+        <h5 class="text-center">Tidak ada peserta</h5>
       </div>
-
+    @endif
 @endsection
 
 @section('jscript')
