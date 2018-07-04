@@ -62,7 +62,7 @@
 	
 		<div class="card text-left">
 	  		<div class="card-body">
-	    		<h5 class="card-title">Soal No. {{$soals->id}}</h5>
+	    		<h5 class="card-title">Soal No. {{$no}}</h5>
 	    		<p class="card-text">Kategori : {{$soals->kategori}}</p>
 	  		</div>
 	  		

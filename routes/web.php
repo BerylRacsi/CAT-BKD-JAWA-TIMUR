@@ -22,6 +22,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('ujian/start', 'UjianController@start');
 Route::resource('ujian','UjianController');
 //Route::get('/ujian', 'HomeController@start');
 
