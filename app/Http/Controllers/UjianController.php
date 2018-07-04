@@ -24,48 +24,58 @@ class UjianController extends Controller
 
     public function start(Request $request)
     {
-        //Check if user already take quiz in DB
+        //Check if user already generate question in DB
         $iduser = Auth::getUser()->id;
-
         $count = Ujian::where('user_id','=',$iduser)->count();
 
-        //if id count > 0, continue. Do not random
+        //if question already generated, continue to start quiz
         if ($count > 0) {
-            return redirect('ujian');
+            return redirect('ujian/1');
         }
+        
         //Assign random question for each category
-
         $idtwk = Soal::select('id')->where('kategori','=','TWK')->inRandomOrder()->take(30)->get();
         $idtiu = Soal::select('id')->where('kategori','=','TIU')->inRandomOrder()->take(30)->get();
-        $idtkp = Soal::select('id')->where('kategori','=','TKP')->inRandomOrder()->take(30)->get();
-        
+        $idtkp = Soal::select('id')->where('kategori','=','TKP')->inRandomOrder()->take(40)->get();
+
         $idsoal = $idtwk->merge($idtiu)->merge($idtkp);
 
+        //change collection to array, with value separated
         $idsoal = $idsoal->implode('id',',');
 
+        //insert into DB
         $ujian = new Ujian;
         $ujian->soal = $request->input('idsoal',$idsoal);
         $ujian->user_id = $request->input('iduser',$iduser);
         $ujian->save();
 
-        return view('ujian.start',compact('idsoal'));
+        return redirect('ujian/1');
 
     }
 
     public function show($id)
     {
-        //agar bisa ambil soal index 0
+        //mencegah error perubahan link
+        if($id < 1 || $id > 100){
+            return redirect('ujian');
+        }
+
+        //create index for array
         $id_array = $id-1;
 
         $iduser = Auth::getUser()->id;
         $soal_db = Ujian::select('soal')->where('user_id','=',$iduser)->get();
+
+        //get random question number from DB
         $array_nomor_acak = explode(",", $soal_db);
 
+        //clean array value format
         $array_nomor_acak[0] = substr($array_nomor_acak[0], 10);
-        $array_nomor_acak[89] = substr($array_nomor_acak[89], 0,-3);
+        $array_nomor_acak[99] = substr($array_nomor_acak[99], 0,-3);
 
         $nomor_di_db = $array_nomor_acak[$id_array];
 
+        //get question based on random
         $soals = Soal::find($nomor_di_db);
 
         $previous = $id-1;
@@ -82,9 +92,8 @@ class UjianController extends Controller
      */
     public function index()
     {   
-//        $soals = Soal::all();
-//        $soals->id = 1;
-        return view('ujian.index',compact('soals'));
+
+        return view('ujian.index');
     }
 
     /**

@@ -11,12 +11,12 @@ class SoalsTableSeeder extends Seeder
      */
     public function run()
     {
-      for ($i=0; $i < 9; $i++) { 
+      for ($i=0; $i < 50; $i++) { 
         # code...
         DB::table('soals')->insert([
 
           'deskripsi' => str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5),
-          'kategori' => str_random(10),
+          'kategori' => 'TKP',
           'opsi1' => str_random(7),
           'opsi2' => str_random(7),
           'opsi3' => str_random(7),

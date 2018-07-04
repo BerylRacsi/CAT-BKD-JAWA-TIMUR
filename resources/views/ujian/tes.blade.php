@@ -94,14 +94,14 @@
 		<br>
 		<br>
 	  		<center>
-	  			@if ($soals->id == 1)
-	  			<a href="#" class="btn btn-outline-secondary mr-3" style="font-weight: 500; "disabled><i class="fa fa-chevron-circle-left"></i> Sebelumnya</a>
+	  			@if ($no == 1)
+	  			<div class="btn btn-outline-secondary mr-3" style="font-weight: 500; "disabled><i class="fa fa-chevron-circle-left"></i> Sebelumnya</div>
 	  			@else
 	  			<a href="/ujian/{{$previous}}" class="btn btn-outline-secondary mr-3" style="font-weight: 500;"><i class="fa fa-chevron-circle-left"></i> Sebelumnya</a>
 	  			@endif
 
-	  			@if ($soals->id == 100)
-	  			<a href="/ujian/{{$next}}" class="btn btn-outline-secondary ml-3" style="font-weight: 500;" disabled>Selanjutnya <i class="fa fa-chevron-circle-right"></i></a>
+	  			@if ($no == 100)
+	  			<div class="btn btn-outline-secondary ml-3" style="font-weight: 500;" disabled>Selanjutnya <i class="fa fa-chevron-circle-right"></i></div>
 	  			@else
 	  			<a href="/ujian/{{$next}}" class="btn btn-outline-secondary ml-3" style="font-weight: 500;">Selanjutnya <i class="fa fa-chevron-circle-right"></i></a>
 	  			@endif

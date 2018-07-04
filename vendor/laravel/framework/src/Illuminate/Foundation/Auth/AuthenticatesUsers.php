@@ -4,6 +4,7 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Ujian;
 
 trait AuthenticatesUsers
 {
@@ -153,7 +154,12 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
+        $iduser = Auth::user()->id;
+        $soal = Ujian::where('user_id','=',$iduser);
+        $soal->delete();
+
         $this->guard()->logout();
+
 
         $request->session()->invalidate();
 
