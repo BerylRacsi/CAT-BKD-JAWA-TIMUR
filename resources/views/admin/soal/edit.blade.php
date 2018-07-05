@@ -68,7 +68,7 @@
 			    </div>
 			</div>
 			</center>
-			{{Form::hidden('_method','PUT')}}	
+			{{Form::hidden('_method','PUT')}}
 			<center>
 			{{Form::submit('Submit',['class' => 'btn btn-primary'])}}
 			</center>

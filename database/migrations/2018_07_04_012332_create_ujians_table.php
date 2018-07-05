@@ -17,6 +17,7 @@ class CreateUjiansTable extends Migration
             $table->increments('id');
             $table->string('soal',500);
             $table->integer('user_id')->reference('id')->on('users');
+            $table->string('jawaban',500);
             $table->timestamps();
         });
     }

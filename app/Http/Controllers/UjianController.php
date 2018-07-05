@@ -43,10 +43,19 @@ class UjianController extends Controller
         //change collection to array, with value separated
         $idsoal = $idsoal->implode('id',',');
 
+        //inisialisasi jawaban
+        for ($i=0; $i < 100 ; $i++) { 
+            $jawaban_kosong[$i] = '0';
+        }
+
+        $jawaban_kosong = implode(',', $jawaban_kosong);
+
+
         //insert into DB
         $ujian = new Ujian;
-        $ujian->soal = $request->input('idsoal',$idsoal);
+        $ujian->soal = $idsoal;
         $ujian->user_id = $request->input('iduser',$iduser);
+        $ujian->jawaban = $jawaban_kosong;
         $ujian->save();
 
         return redirect('ujian/1');
@@ -64,16 +73,21 @@ class UjianController extends Controller
         $id_array = $id-1;
 
         $iduser = Auth::getUser()->id;
-        $soal_db = Ujian::select('soal')->where('user_id','=',$iduser)->get();
+        $soal_db = Ujian::select('soal','jawaban')->where('user_id','=',$iduser)->get();
 
         //get random question number from DB
-        $array_nomor_acak = explode(",", $soal_db);
+        $array_db = explode(",", $soal_db);
 
         //clean array value format
-        $array_nomor_acak[0] = substr($array_nomor_acak[0], 10);
-        $array_nomor_acak[99] = substr($array_nomor_acak[99], 0,-3);
+        $array_db[0] = substr($array_db[0], 10);
+        $array_db[99] = substr($array_db[99], 0,-1);
 
-        $nomor_di_db = $array_nomor_acak[$id_array];
+        $array_db[100] = substr($array_db[100], 11);
+        $array_db[199] = substr($array_db[199], 0,-3);
+
+
+        $nomor_di_db = $array_db[$id_array];
+        $jawaban_di_db = $array_db[$id_array+100];
 
         //get question based on random
         $soals = Soal::find($nomor_di_db);
@@ -81,7 +95,9 @@ class UjianController extends Controller
         $previous = $id-1;
         $next = $id+1;
 
-        return view('ujian.tes')->with('soals',$soals)->with('previous',$previous)->with('next',$next)->with('no',$id);
+        return view('ujian.tes')->with('soals',$soals)->with('previous',$previous)->with('next',$next)->with('no',$id)->with('jawaban',$jawaban_di_db)->with('array',$array_db);
+        // return dd($jawaban_di_db);
+
 
     }
 
@@ -144,7 +160,28 @@ class UjianController extends Controller
 
         //implode ke db
 
-        return dd($jawaban);
+        $id_array = $id-1;
+
+        $iduser = Auth::getUser()->id;
+        $soal_db = Ujian::select('jawaban')->where('user_id','=',$iduser)->get();
+
+        //get array jawaban
+        $array_jawaban = explode(",", $soal_db);
+
+        //clean array value format
+        $array_jawaban[0] = substr($array_jawaban[0], 13);
+        $array_jawaban[99] = substr($array_jawaban[99], 0,-3);
+
+        $array_jawaban[$id_array] = $jawaban;
+
+        $array_jawaban = implode(',', $array_jawaban);
+
+        //updating
+        $update = Ujian::where('user_id',$iduser)->first();
+        $update->jawaban = $array_jawaban;
+        $update->save();
+
+        return redirect('ujian/'.($id+1));
     }
 
     /**
