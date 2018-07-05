@@ -154,9 +154,6 @@ trait AuthenticatesUsers
      */
     public function logout(Request $request)
     {
-        $iduser = Auth::user()->id;
-        $soal = Ujian::where('user_id','=',$iduser);
-        $soal->delete();
 
         $this->guard()->logout();
 

@@ -39,8 +39,8 @@
 			@endif
 	  		@for ($j=1; $j<=5;$j++)	
 			<div class="btn-group mr-2" role="group" aria-label="First group" style="margin-left: 5px; margin-bottom: 5px;" >
-	    		<button type="button" class="btn btn-sm btn-outline-secondary btn-block" style="width: 40px; font-weight:  500" >{{$n++}}
-	    		</button>
+	    		<a href="{{ url('/ujian/'.$n) }}" class="btn btn-sm btn-outline-secondary btn-block" style="width: 40px; font-weight:  500" >{{$n++}}
+	    		</a>
 			</div>
 		  	@endfor
 		</div>
@@ -72,21 +72,24 @@
 	  		<div class="card-body">
 	    		<p class="card-text">{{$soals->deskripsi}}</p>
 
-	    		<div class="radio">
-				  <label><input type="radio" name="optradio"> A. {{$soals->opsi1}}</label>
-				</div>
-				<div class="radio">
-				  <label><input type="radio" name="optradio"> B. {{$soals->opsi2}}</label>
-				</div>
-				<div class="radio">
-				  <label><input type="radio" name="optradio"> C. {{$soals->opsi3}}</label>
-				</div>
-				<div class="radio">
-				  <label><input type="radio" name="optradio"> D. {{$soals->opsi4}}</label>
-				</div>
-				<div class="radio">
-				  <label><input type="radio" name="optradio"> E. {{$soals->opsi5}}</label>
-				</div>
+				{!! Form::open(['action' => ['UjianController@update',$no],'method' => 'POST']) !!}
+		    	<div class="radio">
+					  <label><input type="radio" name="optradio" value="opsi1"> A. {{$soals->opsi1}}</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio" value="opsi2"> B. {{$soals->opsi2}}</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio" value="opsi3"> C. {{$soals->opsi3}}</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio" value="opsi4"> D. {{$soals->opsi4}}</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="optradio" value="opsi5"> E. {{$soals->opsi5}}</label>
+					</div>
+          {{Form::hidden('_method','PUT')}} 
+				{!! Form::close() !!}	
 	  		</div>
 
 	  		
@@ -95,15 +98,15 @@
 		<br>
 	  		<center>
 	  			@if ($no == 1)
-	  			<div class="btn btn-outline-secondary mr-3" style="font-weight: 500; "disabled><i class="fa fa-chevron-circle-left"></i> Sebelumnya</div>
+	  			<div class="btn btn-outline-secondary mr-3 disabled" style="font-weight: 500; "disabled><i class="fa fa-chevron-circle-left"></i> Sebelumnya</div>
 	  			@else
-	  			<a href="/ujian/{{$previous}}" class="btn btn-outline-secondary mr-3" style="font-weight: 500;"><i class="fa fa-chevron-circle-left"></i> Sebelumnya</a>
+	  			<a type="submit" href="/ujian/{{$previous}}" class="btn btn-outline-secondary mr-3" style="font-weight: 500;"><i class="fa fa-chevron-circle-left"></i> Sebelumnya</a>
 	  			@endif
 
 	  			@if ($no == 100)
-	  			<div class="btn btn-outline-secondary ml-3" style="font-weight: 500;" disabled>Selanjutnya <i class="fa fa-chevron-circle-right"></i></div>
+	  			<div class="btn btn-outline-secondary ml-3 disabled" style="font-weight: 500;" disabled>Selanjutnya <i class="fa fa-chevron-circle-right"></i></div>
 	  			@else
-	  			<a href="/ujian/{{$next}}" class="btn btn-outline-secondary ml-3" style="font-weight: 500;">Selanjutnya <i class="fa fa-chevron-circle-right"></i></a>
+	  			<a type="submit" href="/ujian/{{$next}}" class="btn btn-outline-secondary ml-3" style="font-weight: 500;">Selanjutnya <i class="fa fa-chevron-circle-right"></i></a>
 	  			@endif
 	  		</center>
 
@@ -138,5 +141,12 @@ var x = setInterval(function() {
         document.getElementById("demo").innerHTML = "EXPIRED";
     }
 }, 1000);
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('input[name=optradio]').change(function(){
+      $('form').submit();
+    });
+  });
 </script>
 @endsection

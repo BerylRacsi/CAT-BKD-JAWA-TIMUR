@@ -138,7 +138,13 @@ class UjianController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $jawaban = $request->input('optradio');
+
+        // updaye array sesuai dengan index $id
+
+        //implode ke db
+
+        return dd($jawaban);
     }
 
     /**
@@ -149,6 +155,8 @@ class UjianController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $iduser = Auth::user()->id;
+        $soal = Ujian::where('user_id','=',$iduser);
+        $soal->delete();
     }
 }
