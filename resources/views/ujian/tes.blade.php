@@ -160,7 +160,6 @@
 
 //var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
 
-document.getElementById("waktu").innerHTML = waktuJS;
 
 // Update the count down every 1 second
 var x = setInterval(function() {
