@@ -19,43 +19,46 @@ class UjianController extends Controller
      */
     public function __construct()
     {
+        // Authenticate whether user logged in or not
         $this->middleware('auth');
 
     }
 
     public function start(Request $request)
     {
-        //Check if user already generate question in DB
+        // Check if user already generate question in DB
         $iduser = Auth::getUser()->id;
         $count = Ujian::where('user_id','=',$iduser)->count();
 
-        //if question already generated, continue to start quiz
+        // If question already generated, continue to already running quiz
         if ($count > 0) {
             return redirect('ujian/1');
         }
         
-        //Assign random question for each category
+        // Assign random question id for each category
         $idtwk = Soal::select('id')->where('kategori','=','TWK')->inRandomOrder()->take(30)->get();
         $idtiu = Soal::select('id')->where('kategori','=','TIU')->inRandomOrder()->take(30)->get();
         $idtkp = Soal::select('id')->where('kategori','=','TKP')->inRandomOrder()->take(40)->get();
 
+        // Merge into single collection of "random question id"
         $idsoal = $idtwk->merge($idtiu)->merge($idtkp);
 
-        //change collection to array, with value separated
+        // Convert collection of "random question id" into string separated by comma
         $idsoal = $idsoal->implode('id',',');
 
-        //inisialisasi jawaban
+        // Initiate the "array of answer" with '0' value
         for ($i=0; $i < 100 ; $i++) { 
             $jawaban_kosong[$i] = '0';
         }
 
+        //Convert "array of answer" into string separated by comma
         $jawaban_kosong = implode(',', $jawaban_kosong);
 
 
-        //insert into DB
+        // Insert string of "random questionid" and "answer" into ujians table in DB
         $ujian = new Ujian;
         $ujian->soal = $idsoal;
-        $ujian->user_id = $request->input('iduser',$iduser);
+        $ujian->user_id = $iduser;
         $ujian->jawaban = $jawaban_kosong;
         $ujian->save();
 
@@ -65,46 +68,56 @@ class UjianController extends Controller
 
     public function show($id)
     {
-        //mencegah error perubahan link
+        // Prevent user modify url into ujian/0 or ujian/100++
         if($id < 1 || $id > 100){
             return redirect('ujian');
         }
 
-        //create index for array
-        $id_array = $id-1;
+        // Create index for array usage
+        $index_array = $id-1;
 
+        // Get necessary information (soal and jawaban column) from ujians table in DB
         $iduser = Auth::getUser()->id;
-        $soal_db = Ujian::select('soal','jawaban')->where('user_id','=',$iduser)->get();
+        $info_db = Ujian::select('soal','jawaban')->where('user_id','=',$iduser)->get();
 
-        //get random question number from DB
-        $array_db = explode(",", $soal_db);
+        // Convert string separated by comma of "random question id" and "jawaban" into array
+        $array_db = explode(",", $info_db);
 
-        //clean array value format
+        // Clean array value format
+        // We get array with 200 index
+        // Index 0 - 99 "random question id" from `ujians.soal`
+        // Index 100-199 "answer" from `ujians.jawaban`
+        // We need to clean because explode() collection return dirty value 
         $array_db[0] = substr($array_db[0], 10);
         $array_db[99] = substr($array_db[99], 0,-1);
 
         $array_db[100] = substr($array_db[100], 11);
         $array_db[199] = substr($array_db[199], 0,-3);
 
+        // Uncomment line below and go to /ujian/{id} in browser to check the array value
+        // dd($array_db);
 
-        $nomor_di_db = $array_db[$id_array];
-        $jawaban_di_db = $array_db[$id_array+100];
+        // Get requested question id
+        $nomor_di_db = $array_db[$index_array];
 
-        //get question based on random
+        // Get user answer to check if the question already answered
+        $jawaban_di_db = $array_db[$index_array+100];
+
+
+        // Get the question
         $soals = Soal::find($nomor_di_db);
 
-        $previous = $id-1;
-        $next = $id+1;
+        // Get the question
+        $soals = Soal::find($nomor_di_db);
 
         $waktu = Ujian::select('created_at')->where('user_id','=',$iduser)->get();
         $waktu = substr($waktu, 16);
         $waktu = substr($waktu, 0 , -3);
-//        $waktu = $waktu->getTimestamp();
 
         $waktu = new DateTime($waktu);
         $waktu = $waktu->getTimestamp();
 
-        return view('ujian.tes')->with('soals',$soals)->with('previous',$previous)->with('next',$next)->with('no',$id)->with('jawaban',$jawaban_di_db)->with('array',$array_db)->with('waktu',$waktu);
+        return view('ujian.tes',compact('soals'))->with('nomor_sekarang',$id)->with('jawaban',$jawaban_di_db)->with('array',$array_db)->with('waktu',$waktu);
         // return dd($jawaban_di_db);
 
 
@@ -163,31 +176,29 @@ class UjianController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // Get user answer on page
         $jawaban = $request->input('optradio');
 
-        // updaye array sesuai dengan index $id
-
-        //implode ke db
-
-        $id_array = $id-1;
-
+        // Get necessary information (jawaban column) from ujians table in DB
         $iduser = Auth::getUser()->id;
-        $soal_db = Ujian::select('jawaban')->where('user_id','=',$iduser)->get();
+        $info_db = Ujian::select('jawaban')->where('user_id','=',$iduser)->get();
 
-        //get array jawaban
-        $array_jawaban = explode(",", $soal_db);
+        // Convert string separated by comma of "jawaban" column into array
+        $array_db = explode(",", $info_db);
 
-        //clean array value format
-        $array_jawaban[0] = substr($array_jawaban[0], 13);
-        $array_jawaban[99] = substr($array_jawaban[99], 0,-3);
+        // Clean array value format
+        $array_db[0] = substr($array_db[0], 13);
+        $array_db[99] = substr($array_db[99], 0,-3);
 
-        $array_jawaban[$id_array] = $jawaban;
+        // Replace value of specific array "jawaban" with user answer on page
+        $array_db[$id-1] = $jawaban;
 
-        $array_jawaban = implode(',', $array_jawaban);
+        // Convert back array of "jawaban" into string separated by comma
+        $array_db = implode(',', $array_db);
 
-        //updating
+        // Insert string of "jawaban" into ujians table in DB
         $update = Ujian::where('user_id',$iduser)->first();
-        $update->jawaban = $array_jawaban;
+        $update->jawaban = $array_db;
         $update->save();
 
         return redirect('ujian/'.($id+1));
