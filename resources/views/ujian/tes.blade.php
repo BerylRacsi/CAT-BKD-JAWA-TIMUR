@@ -128,6 +128,7 @@
           </div>
           {{Form::hidden('_method','PUT')}} 
         {!! Form::close() !!} 
+        
         </div>
 
         
@@ -150,18 +151,24 @@
 
 </div>
 </div>
+<script type="text/javascript">
+	var waktuJS = new Date({{$waktu}} * 1000).getTime();
+	var waktuJS = waktuJS + 5400000;
+</script>
 <script>
 // Set the date we're counting down to
-var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+
+//var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+
+document.getElementById("waktu").innerHTML = waktuJS;
 
 // Update the count down every 1 second
 var x = setInterval(function() {
 
     // Get todays date and time
     var now = new Date().getTime();
-    
     // Find the distance between now an the count down date
-    var distance = countDownDate - now;
+    var distance = waktuJS - now;
     
     // Time calculations for days, hours, minutes and seconds
     var days = Math.floor(distance / (1000 * 60 * 60 * 24));

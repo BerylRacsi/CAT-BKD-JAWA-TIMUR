@@ -6,6 +6,7 @@ use App\Ujian;
 use App\User;
 use App\Soal;
 use Auth;
+use DateTime;
 use Illuminate\Http\Request;
 
 class UjianController extends Controller
@@ -95,7 +96,15 @@ class UjianController extends Controller
         $previous = $id-1;
         $next = $id+1;
 
-        return view('ujian.tes')->with('soals',$soals)->with('previous',$previous)->with('next',$next)->with('no',$id)->with('jawaban',$jawaban_di_db)->with('array',$array_db);
+        $waktu = Ujian::select('created_at')->where('user_id','=',$iduser)->get();
+        $waktu = substr($waktu, 16);
+        $waktu = substr($waktu, 0 , -3);
+//        $waktu = $waktu->getTimestamp();
+
+        $waktu = new DateTime($waktu);
+        $waktu = $waktu->getTimestamp();
+
+        return view('ujian.tes')->with('soals',$soals)->with('previous',$previous)->with('next',$next)->with('no',$id)->with('jawaban',$jawaban_di_db)->with('array',$array_db)->with('waktu',$waktu);
         // return dd($jawaban_di_db);
 
 
