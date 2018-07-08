@@ -6,8 +6,9 @@
 <div class="row">
 
   <div class="col-4">
-    <div class="card border-secondary mb-3" style="max-width: 288px; height: 248px; overflow: auto;">
+    <div class="card border-secondary mb-3" style="max-width: 324px; height: 248px; overflow: auto;">
     <div class="card-header">Peta Soal</div>
+    <div class="card-body">
     @php
     $nomor_soal = 1;
     $kosong = 0;
@@ -38,8 +39,9 @@
       @endfor
       </div>{{-- End of body peta soal --}}
     @endfor
+    </div>
     </div>{{-- End of peta soal --}}
-    <div class="card text-center" style="width: 288px; ">
+    <div class="card text-center" style="width: 324px; ">
       <div class="card-body">
         <div class="row">
           <div class="col">
@@ -56,7 +58,7 @@
       </div>
     </div>{{-- End of soal terjawab dan kosong --}}
     <br>
-    <div class="card text-center text-white bg-dark" style="width: 288px; height: 64px;">
+    <div class="card text-center text-white bg-dark" style="width: 324px; height: 64px;">
       <p id="demo" style="font-size: 40px;font-weight: bold; "></p>
     </div>
     <br>

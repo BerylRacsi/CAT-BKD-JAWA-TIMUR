@@ -24,7 +24,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('ujian/start', 'UjianController@start');
+Route::get('ujian/selesai', 'UjianController@finish');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('ujian','UjianController');
+
+
 //Route::get('/ujian', 'HomeController@start');
 
 Route::prefix('admin')->group(function() {

@@ -204,6 +204,11 @@ class UjianController extends Controller
         return redirect('ujian/'.($id+1));
     }
 
+    public function finish()
+    {
+        return view('ujian.hasil');
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use User;
+use App\Ujian;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -35,5 +39,12 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(Request $request) {
+        $iduser = Auth::id();
+        Ujian::where('user_id','=',$iduser)->delete();
+        Auth::logout();
+        return redirect('/');
     }
 }
