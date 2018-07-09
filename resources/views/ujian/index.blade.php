@@ -62,9 +62,11 @@
 </div>
 </div> 
   <div class="text-center" style="padding-top: 2em;">
-        
-          <a href="/ujian/start" class="btn btn-lg btn-outline-primary mr-sm-1">Mulai Tes</a>
-  
+    <center>
+    {!! Form::open(['action' => 'UjianController@store','method' => 'POST']) !!}
+      {{Form::submit('Mulai',['class' => 'btn btn-lg btn-outline-primary'])}}
+    {!! Form::close() !!}
+    </center>
   </div>  
 </div>
 @endsection 

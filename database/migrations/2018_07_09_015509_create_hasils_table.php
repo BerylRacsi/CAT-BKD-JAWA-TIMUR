@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUjiansTable extends Migration
+class CreateHasilsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUjiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('ujians', function (Blueprint $table) {
+        Schema::create('hasils', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('soal',500);
             $table->integer('user_id')->reference('id')->on('users');
-            $table->string('jawaban',500);
-            $table->string('kunci',500);
+            $table->integer('nilaitwk');
+            $table->integer('nilaitiu');
+            $table->integer('nilaitkp');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateUjiansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ujians');
+        Schema::dropIfExists('hasils');
     }
 }

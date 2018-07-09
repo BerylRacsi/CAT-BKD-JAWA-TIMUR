@@ -31,9 +31,9 @@
               </div>
               <div class="col-2">
                 <ul class="list-unstyled text-right">
-                  <li>30</li>
-                  <li>121</li>
-                  <li>45</li>
+                  <li>{{ $hasil->nilaitwk }}</li>
+                  <li>{{ $hasil->nilaitiu }}</li>
+                  <li>{{ $hasil->nilaitkp }}</li>
                 </ul>
               </div>
     </div>
@@ -51,7 +51,7 @@
               </div>
               <div class="col-2">
                 <ul class="list-unstyled text-right">
-                  <li>234</li>
+                  <li>{{ $hasil->nilaitwk + $hasil->nilaitiu + $hasil->nilaitkp }}</li>
                 </ul>
               </div>
     </div>
@@ -60,18 +60,15 @@
 </div>
 </div> 
   <div class="text-center" style="padding-top: 2em; padding-bottom: 5em;">
-        
-          <a class="btn btn-lg btn-success" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                                     <i class="fa fa-sign-out"></i>
-                                            Selesai
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-  
+    <a class="btn btn-lg btn-success" href="{{ route('logout') }}"
+    onclick="event.preventDefault();
+    document.getElementById('logout-form').submit();">
+    <i class="fa fa-sign-out"></i>
+    Keluar
+  </a>
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+  </form>
   </div>  
 </div>
 @endsection 

@@ -23,8 +23,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('ujian/start', 'UjianController@start');
-Route::get('ujian/selesai', 'UjianController@finish');
+Route::get('/ujian/finish', 'UjianController@finish');
+Route::get('/ujian/hasil', 'UjianController@hasil');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::resource('ujian','UjianController');
 

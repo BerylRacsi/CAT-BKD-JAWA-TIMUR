@@ -21,7 +21,7 @@
         @if ($i==7)
         <p class="btn-block text-center"><br>- - - - - - - - - - TIU - - - - - - - - - -</p>      
         @endif
-        @if ($i==15)
+        @if ($i==13)
         <p class="btn-block text-center"><br>- - - - - - - - - - TKP - - - - - - - - - -</p>
         @endif
       @for ($j=1; $j<=5;$j++)
@@ -54,7 +54,7 @@
           </div>
         </div>
         <br>
-        <a href="/ujian/selesai" class="btn btn-success btn-block">Selesai Ujian</a>
+        <a href="/ujian/finish" class="btn btn-success btn-block">Selesai Ujian</a>
       </div>
     </div>{{-- End of soal terjawab dan kosong --}}
     <br>

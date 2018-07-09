@@ -22,7 +22,7 @@ class SoalsTableSeeder extends Seeder
           'opsi3' => str_random(7),
           'opsi4' => str_random(7),
           'opsi5' => str_random(7),
-          'jawaban' => str_random(7),
+          'jawaban' => 'C',
           'image' => str_random(20), 
 
         ]);

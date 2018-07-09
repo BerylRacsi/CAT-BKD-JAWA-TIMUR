@@ -40,11 +40,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    public function logout(Request $request) {
-        $iduser = Auth::id();
-        Ujian::where('user_id','=',$iduser)->delete();
-        Auth::logout();
-        return redirect('/');
-    }
 }
