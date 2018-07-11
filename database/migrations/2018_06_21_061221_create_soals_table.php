@@ -23,7 +23,7 @@ class CreateSoalsTable extends Migration
             $table->string('opsi4');
             $table->string('opsi5');
             $table->string('jawaban');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@
 			<div class="form-group">
 				{{Form::label('kategori','Kategori')}}
 				<br>					
-				{{Form::select('kategori', ['TWK' => 'Tes Wawasan Kebangsaan', 'TIU' => 'Tes Intelegensi Umum','TKP' => 'Tes Karakteristik Pribadi'],null, array('class' => 'btn btn-light dropdown-toggle','id'=>'kategori'))}}
+				{{Form::select('kategori', ['TKP' => 'Tes Karakteristik Pribadi','TWK' => 'Tes Wawasan Kebangsaan', 'TIU' => 'Tes Intelegensi Umum'],null, array('class' => 'btn btn-light dropdown-toggle','id'=>'kategori'))}}
 			</div>
 			<div class="form-group">
 				{{Form::label('deskripsi','Deskripsi')}}
@@ -51,9 +51,7 @@
 			  </center>
 			</div>
 			<br>
-			<br>
-
-			<div id="tkpdiv" style="display: none;">
+			
 			<center>
 			<label>Pilihan Kunci TKP</label><br>
 			<label for="kunci1">Kunci 1 (Skor 1)</label>
@@ -108,13 +106,13 @@
 		    <br>
 		    <br>
 		    </center>
-		    </div>
 
 			<center>
 			<div class="form-group">
 				<div class="col-6">
 					{{Form::label('jawaban','Jawaban Benar')}}
 			    	{{Form::text('jawaban','',['id'=>'demo','class' => 'form-control' ,'placeholder' => 'Ketik jawaban yang benar'])}}
+			    	
 			    </div>
 			</div>
 			</center>
@@ -138,20 +136,14 @@
 <script type="text/javascript">
 	$('select').on('change', function()
 	{
-	    var x = document.getElementById("tkpdiv");
-		if((this.value) == "TKP")
+		if((this.value) == "TWK" || (this.value) == "TIU")
 		{
-		    if (x.style.display === "none") {
-		        x.style.display = "block";
-		    } 	
+	    	location.href = '/admin/soal/create';
+	    	document.getElementById("kategori").value = "TIU";		
 		}
-		else if ((this.value) == "TIU" || (this.value) == "TWK")
-		{
-			x.style.display = "none";
-		}	
-		
 	});
 </script>
+
 
 <script type="text/javascript">
 	var kunci1,kunci2,kunci3,kunci4,kunci5,kuncitkp;

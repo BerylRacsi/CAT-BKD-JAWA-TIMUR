@@ -31,7 +31,7 @@ class UjianController extends Controller
         // Prevent user modify url into ujian/0 or ujian/100++
       $count = Ujian::where('user_id','=',Auth::user()->id)->count();
       if($id < 1 || $id > 100 || $count < 1){
-        return redirect('ujian');
+        return redirect('/ujian/');
       }
 
         // Create index for array usage
@@ -46,7 +46,8 @@ class UjianController extends Controller
         // We get array with 200 index
         // Index 0 - 99 "random question id" from `ujians.soal`
         // Index 100-199 "answer" from `ujians.jawaban`
-        // We need to clean because explode() collection return dirty value 
+        // We need to clean because explode() collection return dirty value
+
       $array_db[0] = substr($array_db[0], 10);
       $array_db[99] = substr($array_db[99], 0,-1);
 
@@ -243,17 +244,28 @@ class UjianController extends Controller
       $tkp=0;
 
       for ($i = 0; $i < 100 ; $i++) { 
-        if ($jawaban_user[$i] == $kunci[$i]) {
           if ($i < 30) {
-            $twk+=5;
+            if ($jawaban_user[$i] == $kunci[$i]){
+                $twk+=5;
+            } 
           }
           else if ($i > 29 && $i < 60) {
-            $tiu+=5;
+            if ($jawaban_user[$i] == $kunci[$i]){
+                $tiu+=5;
+            }
           }
           else if ($i > 59 && $i < 100) {
-            $tkp+=5;
+
+            $kunci_tkp = $kunci[$i];
+            for ($j = 0; $j < 5; $j++)
+            {
+                if($jawaban_user[$i] == $kunci_tkp[$j])
+                {
+                    $tkp+=($j+1);
+                }
+            }    
           }
-        }
+        
       }
 
       $hasil = new Hasil;

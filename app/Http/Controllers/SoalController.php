@@ -33,6 +33,11 @@ class SoalController extends Controller
         return view('admin.soal.create');
     }
 
+    public function createtkp()
+    {
+        return view('admin.soal.create-tkp');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

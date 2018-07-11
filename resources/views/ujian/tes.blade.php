@@ -71,6 +71,14 @@
         </div>
     </div>
     <br>
+
+    @if($soals->image != NULL)
+    <div class="card">
+      <img src="{{asset($soals->image)}}" class="img-fluid" alt="Responsive image">
+    </div>
+    <br>
+    @endif
+
     <div class="card text-left">
       <div class="card-body">
         <p class="card-text">{{$soals->deskripsi}}</p>
@@ -168,7 +176,8 @@ var x = setInterval(function() {
     // If the count down is over, write some text 
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("demo").innerHTML = "EXPIRED";
+        document.getElementById("demo").innerHTML = "WAKTU HABIS";
+        location.href = '/ujian/finish';
     }
 }, 1000);
 </script>
