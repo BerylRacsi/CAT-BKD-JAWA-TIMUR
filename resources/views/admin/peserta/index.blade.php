@@ -9,7 +9,6 @@
 
 
 @section('content')
-
   <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
@@ -18,12 +17,15 @@
         <div class="card-body">
 
         @if(count($users)>0)
+          @php
+            $no = 0;
+          @endphp
 
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>No</th>
                   <th>Nama</th>
                   <th>Email</th>
                   <th>Tgl Daftar</th>
@@ -33,7 +35,7 @@
               <tbody>
                 @foreach($users as $user)
                 <tr>
-                  <td>{{$user->id}}</td>
+                  <td>{{$no += 1}}</td>
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->created_at}}</td>
@@ -65,6 +67,5 @@
   <!-- Custom scripts for this page-->
   <script src="/js/sb-admin-datatables.min.js"></script>
   <script src="/js/sb-admin-charts.min.js"></script>
-  <script src="/js/ellipsis.js"></script>
 
 @endsection

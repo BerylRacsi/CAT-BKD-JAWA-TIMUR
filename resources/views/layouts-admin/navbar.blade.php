@@ -9,11 +9,6 @@
             <i class="fa fa-fw fa-user"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item small" href="{{ url ('#') }}">
-              <i class="fa fa-fw fa-gear"></i>
-              Pengaturan
-            </a>
-            <div class="dropdown-divider"></div>
             <a class="dropdown-item small" data-toggle="modal" data-target="#exampleModal" href="{{ url('#') }}">
               <i class="fa fa-fw fa-sign-out"></i>
               Logout

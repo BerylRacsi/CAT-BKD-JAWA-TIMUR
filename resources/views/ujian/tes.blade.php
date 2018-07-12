@@ -74,7 +74,7 @@
 
     @if($soals->image != NULL)
     <div class="card">
-      <img src="{{asset($soals->image)}}" class="img-fluid" alt="Responsive image">
+      <img src="{{asset('/storage/img/'.$soals->image)}}" class="img-fluid">
     </div>
     <br>
     @endif

@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('hasil', 'AdminController@hasil');
-    Route::get('/soal/create-tkp','SoalController@createtkp');
+    Route::get('live', 'AdminController@live');
     Route::resource('peserta','PesertaController');
     Route::resource('soal','SoalController');
 

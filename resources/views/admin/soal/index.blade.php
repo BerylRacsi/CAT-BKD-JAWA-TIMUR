@@ -16,43 +16,41 @@
         <div class="card-body">
       
         @if(count($soals)>0)
+          @php
+            $no = 0;
+          @endphp
       
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>No</th>
                   <th>Deskripsi</th>
                   <th>Kategori</th>
-                  <th>Opsi 1</th>
-                  <th>Opsi 2</th>
-                  <th>Opsi 3</th>
-                  <th>Opsi 4</th>
-                  <th>Opsi 5</th>
+                  <th>Sub</th>
+                  <th>Kesulitan</th>
                   <th>Kunci</th>
-                  <th>PATH Gambar</th>
+                  <th>File Gambar</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($soals as $soal)
                 <tr>
-                  <td>{{$soal->id}}</td>
+                  <td>{{$no += 1}}</td>
                   <td>{{$soal->deskripsi}}</td>
                   <td>{{$soal->kategori}}</td>
-                  <td>{{$soal->opsi1}}</td>
-                  <td>{{$soal->opsi2}}</td>
-                  <td>{{$soal->opsi3}}</td>
-                  <td>{{$soal->opsi4}}</td>
-                  <td>{{$soal->opsi5}}</td>
+                  <td>{{$soal->subkategori}}</td>
+                  <td>{{$soal->kesulitan}}</td>
                   <td>{{$soal->jawaban}}</td>
                   <td>{{$soal->image}}</td>
                   <td>
+                    <a class="btn btn-sm btn-primary btn-block" href="/admin/soal/{{$soal->id}}">Lihat</a>
                     <a class="btn btn-sm btn-warning btn-block" href="/admin/soal/{{$soal->id}}/edit">Edit</a>
                     <br>
                     {!!Form::open(['action' => ['SoalController@destroy',$soal->id],'method' => 'POST']) !!}
                         {{Form::hidden('_method','DELETE')}}
-                        {{Form::submit('Delete',['class' => 'btn btn-danger btn-sm btn-block'])}}
+                        {{Form::submit('Hapus',['class' => 'btn btn-danger btn-sm btn-block'])}}
                     {!!Form::close()!!}    
                   </td>
                 </tr>

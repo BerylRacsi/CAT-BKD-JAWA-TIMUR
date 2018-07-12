@@ -123,12 +123,12 @@ class UjianController extends Controller
       }
 
         // Assign random question id for each category
-      $idtwk = Soal::select('id','jawaban')->where('kategori','=','TWK')->inRandomOrder()->take(30)->get();
       $idtiu = Soal::select('id','jawaban')->where('kategori','=','TIU')->inRandomOrder()->take(30)->get();
-      $idtkp = Soal::select('id','jawaban')->where('kategori','=','TKP')->inRandomOrder()->take(40)->get();
+      $idtwk = Soal::select('id','jawaban')->where('kategori','=','TWK')->inRandomOrder()->take(35)->get();
+      $idtkp = Soal::select('id','jawaban')->where('kategori','=','TKP')->inRandomOrder()->take(35)->get();
 
         // Merge into single collection of "random question id"
-      $soal = $idtwk->merge($idtiu)->merge($idtkp);
+      $soal = $idtiu->merge($idtwk)->merge($idtkp);
 
         // Convert collection of "random question id" into string separated by comma
       $idsoal = $soal->implode('id',',');
@@ -239,8 +239,8 @@ class UjianController extends Controller
       $jawaban_user = explode(',',$ujian->jawaban);
       $kunci = explode(',',$ujian->kunci);
 
-      $twk=0;
       $tiu=0;
+      $twk=0;
       $tkp=0;
 
       for ($i = 0; $i < 100 ; $i++) { 
@@ -249,12 +249,12 @@ class UjianController extends Controller
                 $twk+=5;
             } 
           }
-          else if ($i > 29 && $i < 60) {
+          else if ($i > 29 && $i < 65) {
             if ($jawaban_user[$i] == $kunci[$i]){
                 $tiu+=5;
             }
           }
-          else if ($i > 59 && $i < 100) {
+          else if ($i > 64 && $i < 100) {
 
             $kunci_tkp = $kunci[$i];
             for ($j = 0; $j < 5; $j++)
@@ -270,8 +270,8 @@ class UjianController extends Controller
 
       $hasil = new Hasil;
       $hasil->user_id = Auth::user()->id;
-      $hasil->nilaitwk = $twk;
       $hasil->nilaitiu = $tiu;
+      $hasil->nilaitwk = $twk;
       $hasil->nilaitkp = $tkp;
       $hasil->save();
 

@@ -11,21 +11,8 @@ class SoalsTableSeeder extends Seeder
      */
     public function run()
     {
-      for ($i=0; $i < 50; $i++) { 
-        # code...
-        DB::table('soals')->insert([
-
-          'deskripsi' => str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5),
-          'kategori' => 'TKP',
-          'opsi1' => str_random(7),
-          'opsi2' => str_random(7),
-          'opsi3' => str_random(7),
-          'opsi4' => str_random(7),
-          'opsi5' => str_random(7),
-          'jawaban' => 'BCDAE',
-          'image' => str_random(20), 
-
-        ]);
-      }
+        $this->call(SoalsTIUseeder::class);
+        $this->call(SoalsTWKseeder::class);
+        $this->call(SoalsTKPseeder::class);
     }
 }

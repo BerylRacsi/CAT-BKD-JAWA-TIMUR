@@ -17,6 +17,8 @@ class CreateSoalsTable extends Migration
             $table->increments('id');
             $table->string('deskripsi');
             $table->string('kategori');
+            $table->string('subkategori');
+            $table->string('kesulitan');
             $table->string('opsi1');
             $table->string('opsi2');
             $table->string('opsi3');

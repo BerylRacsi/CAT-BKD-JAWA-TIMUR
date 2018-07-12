@@ -14,44 +14,44 @@
         <div class="card-header">
           <i class="fa fa-table"></i> Hasil Ujian CAT</div>
         <div class="card-body">
+        @if(count($hasils)>0)
+          @php
+            $no = 0;
+          @endphp
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>No</th>
+                  <th>Nama</th>
+                  <th>Nilai TWK</th>
+                  <th>Nilai TIU</th>
+                  <th>Nilai TKP</th>
+                  <th>Nilai Total</th>
+                  <th>Waktu Selesai Ujian</th>
                 </tr>
               </thead>
-              <tfoot>
-                <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
-                </tr>
-              </tfoot>
               <tbody>
+                @foreach($hasils as $hasil)
                 <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
+                  <td>{{$no += 1}}</td>
+                  <td>{{$hasil->user->name}}</td>
+                  <td>{{$hasil->nilaitwk}}</td>
+                  <td>{{$hasil->nilaitiu}}</td>
+                  <td>{{$hasil->nilaitkp}}</td>
+                  <td>{{ $hasil->nilaitwk + $hasil->nilaitiu + $hasil->nilaitkp }}</td>
+                  <td>{{ $hasil->created_at }}</td>
                 </tr>
+                @endforeach
               </tbody>
             </table>
           </div>
         </div>
         <div class="card-footer small text-muted">Diupdate yesterday at 11:59 PM</div>
+        @else
+        <h5 class="text-center">Tidak ada hasil ujian</h5>
       </div>
-
+        @endif
 @endsection
 
 @section('jscript')
@@ -62,6 +62,5 @@
   <!-- Custom scripts for this page-->
   <script src="/js/sb-admin-datatables.min.js"></script>
   <script src="/js/sb-admin-charts.min.js"></script>
-  <script src="/js/ellipsis.js"></script>
 
 @endsection

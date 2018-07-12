@@ -22,3 +22,9 @@
             <span class="nav-link-text">Hasil</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="LiveScore">
+          <a class="nav-link" href="{{ url('admin/live') }}">
+            <i class="fa fa-fw fa-sort-numeric-asc"></i>
+            <span class="nav-link-text">Hasil</span>
+          </a>
+        </li>
