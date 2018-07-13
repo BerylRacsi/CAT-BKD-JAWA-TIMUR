@@ -12,6 +12,7 @@
   <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
+          <a class="btn btn-success float-right btn-sm" href="{{ url('/admin/peserta/create') }}"><i class="fa fa-plus-circle"></i> Tambah Peserta</a>
           <i class="fa fa-table"></i> Daftar Peserta Ujian CAT
         </div>
         <div class="card-body">
@@ -52,7 +53,6 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Diupdate </div>
         @else
         <h5 class="text-center">Tidak ada peserta</h5>
       </div>

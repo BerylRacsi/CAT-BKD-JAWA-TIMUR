@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Hash;
+
 
 class PesertaController extends Controller
 {
@@ -31,7 +33,7 @@ class PesertaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.peserta.create');
     }
 
     /**
@@ -42,8 +44,21 @@ class PesertaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6',
+        ]);
+
+        $users = new User;
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->password = Hash::make($request->input('password'));
+        $users->save();
+
+        return redirect('/admin/peserta');
     }
+
 
     /**
      * Display the specified resource.

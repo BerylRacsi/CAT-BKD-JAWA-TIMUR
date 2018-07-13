@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="/css/sticky.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
@@ -28,7 +30,7 @@
     
     </div>
 
-    <footer class="border-top" style="padding-top: 2em; padding-bottom: 1em;">
+    <footer class="footer">
         <div class="container text-center">
           <span class="text-bold">Perencanaan Pengadaan Pengolahan Data & SI - BKD &copy 2018</span>
         </div>

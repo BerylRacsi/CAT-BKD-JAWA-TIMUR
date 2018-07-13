@@ -59,13 +59,9 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Diupdate {{$soal->created_at}}</div>
       @else 
       <h5 class="text-center">Tidak ada soal, tekan tombol Tambah Soal untuk menambah soal</h5>   
-
       </div>
-
-
   @endif
 
 @endsection
