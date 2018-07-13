@@ -45,7 +45,10 @@
 
         <div class="card text-left">
           <div class="card-body">
-            <p class="card-text">{{$soals->deskripsi}}</p>
+            <p class="card-text">
+              @php
+              echo $soals->deskripsi;
+              @endphp</p>
 
               <div class="radio">
                 <label><input type="radio" name="optradio" value="A"> A. {{$soals->opsi1}}

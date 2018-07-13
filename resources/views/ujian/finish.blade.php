@@ -9,7 +9,7 @@
 <div class="card " style="width: 35rem;">
   <div class="card-header text-center">
     <h4>
-      Konfirmasi Akhiri Tes
+      Konfirmasi Akhiri Ujian
     </h4>
   </div>
  
@@ -65,10 +65,17 @@
 </div>
 </div> 
   <div class="text-center" style="padding-top: 2em;">
+    <div class="d-flex justify-content-center">
+    <div class="p-2 bd-highlight">
+    <a href="/ujian/1" class="btn btn-lg btn-info"><i class="fa fa-toggle-left"></i> Kembali Mengerjakan</a>
+    </div>
+    <div class="p-2 bd-highlight">
     {!!Form::open(['action' => ['UjianController@destroy',Auth::user()->id],'method' => 'POST']) !!} 
     {{Form::hidden('_method','DELETE')}} 
-      {{Form::submit('Akhiri Ujian',['class' => 'btn btn-lg btn-danger'])}}
+      {{Form::button('Akhiri Ujian <i class="fa fa-exclamation-triangle"></i>',['type'=>'submit','class' => 'btn btn-lg btn-outline-danger'])}}
     {!!Form::close()!!}
+  </div>
+    </div>
   </div>  
 </div>
 

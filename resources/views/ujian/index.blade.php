@@ -54,7 +54,7 @@
               <div class="col-8">
                 <ul class="list-unstyled text-left">
                   <li>100 soal</li>
-                  <li>120 Menit</li>
+                  <li>90 Menit</li>
                 </ul>
               </div>
     </div>

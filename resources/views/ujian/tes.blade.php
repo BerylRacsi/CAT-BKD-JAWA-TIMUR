@@ -16,12 +16,12 @@
     @for ($i=1; $i<=20 ;$i++)
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         @if ($i==1)
-        <p class="btn-block text-center"><br>- - - - - - - - - - TWK - - - - - - - - - -</p>
+        <p class="btn-block text-center"><br>- - - - - - - - - - TIU - - - - - - - - - -</p>
         @endif
         @if ($i==7)
-        <p class="btn-block text-center"><br>- - - - - - - - - - TIU - - - - - - - - - -</p>      
+        <p class="btn-block text-center"><br>- - - - - - - - - - TWK - - - - - - - - - -</p>      
         @endif
-        @if ($i==13)
+        @if ($i==14)
         <p class="btn-block text-center"><br>- - - - - - - - - - TKP - - - - - - - - - -</p>
         @endif
       @for ($j=1; $j<=5;$j++)
