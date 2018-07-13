@@ -61,6 +61,6 @@
   <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>
   <!-- Custom scripts for this page-->
   <script src="/js/sb-admin-datatables.min.js"></script>
-  <script src="/js/sb-admin-charts.min.js"></script>
+  <script src="/js/ellipsis.js"></script>
 
 @endsection

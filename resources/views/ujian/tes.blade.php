@@ -4,11 +4,14 @@
 
 <div class="container p-4">
 <div class="row">
-
   <div class="col-4">
-    <div class="card border-secondary mb-3" style="max-width: 324px; height: 248px; overflow: auto;">
-    <div class="card-header">Peta Soal</div>
-    <div class="card-body">
+    <div class="card text-center text-white bg-dark" style="width: 324px; height: 64px;">
+      <p id="demo" style="font-size: 40px;font-weight: bold; "></p>
+    </div>
+    <br>
+    <div class="card border-primary mb-3" style="max-width: 324px; height: 248px; overflow: auto;">
+    <div class="card-header bg-primary text-white text-center">Peta Soal</div>
+    <div class="card-body pt-0">
     @php
     $nomor_soal = 1;
     $kosong = 0;
@@ -16,13 +19,13 @@
     @for ($i=1; $i<=20 ;$i++)
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         @if ($i==1)
-        <p class="btn-block text-center"><br>- - - - - - - - - - TIU - - - - - - - - - -</p>
+        <p class="btn-block text-center font-weight-bold"><br>- - - - - - - - - - TIU - - - - - - - - - -</p>
         @endif
         @if ($i==7)
-        <p class="btn-block text-center"><br>- - - - - - - - - - TWK - - - - - - - - - -</p>      
+        <p class="btn-block text-center font-weight-bold"><br>- - - - - - - - - - TWK - - - - - - - - - -</p>      
         @endif
         @if ($i==14)
-        <p class="btn-block text-center"><br>- - - - - - - - - - TKP - - - - - - - - - -</p>
+        <p class="btn-block text-center font-weight-bold"><br>- - - - - - - - - - TKP - - - - - - - - - -</p>
         @endif
       @for ($j=1; $j<=5;$j++)
         <div class="btn-group mr-2" role="group" aria-label="First group" style="margin-left: 5px; margin-bottom: 5px;" >
@@ -32,7 +35,7 @@
                 echo '-outline';
                 $kosong++;
             }
-            ?>-secondary
+            ?>-primary
             btn-block" style="width: 40px; font-weight:  500" >{{$nomor_soal++}}
             </a>
         </div>
@@ -45,23 +48,18 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <p style="font-weight: bold;">Soal Terjawab</p>
-            {{100 - $kosong}}
+            <p class="font-weight-bold">Soal Terjawab</p>
+            <h3>{{100 - $kosong}}</h3>
           </div>
           <div class="col">
-            <p style="font-weight: bold;">Masih Kosong</p>
-            {{ $kosong }}
+            <p class="font-weight-bold">Masih Kosong</p>
+            <h3>{{ $kosong }}</h3>
           </div>
         </div>
         <br>
-        <a href="/ujian/finish" class="btn btn-success btn-block">Selesai Ujian</a>
+        <a href="/ujian/finish" class="btn btn-success btn-block font-weight-bold">Selesai Ujian</a>
       </div>
     </div>{{-- End of soal terjawab dan kosong --}}
-    <br>
-    <div class="card text-center text-white bg-dark" style="width: 324px; height: 64px;">
-      <p id="demo" style="font-size: 40px;font-weight: bold; "></p>
-    </div>
-    <br>
   </div>{{-- End of kolom kiri col-4 --}}
   <div class="col-8">
     <div class="card text-left">

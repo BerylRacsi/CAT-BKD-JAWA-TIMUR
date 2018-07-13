@@ -67,7 +67,7 @@
   <div class="text-center" style="padding-top: 2em;">
     <div class="d-flex justify-content-center">
     <div class="p-2 bd-highlight">
-    <a href="/ujian/1" class="btn btn-lg btn-info"><i class="fa fa-toggle-left"></i> Kembali Mengerjakan</a>
+    <a href="/ujian/1" class="btn btn-lg btn-outline-secondary"><i class="fa fa-arrow-left"></i> Kembali</a>
     </div>
     <div class="p-2 bd-highlight">
     {!!Form::open(['action' => ['UjianController@destroy',Auth::user()->id],'method' => 'POST']) !!} 

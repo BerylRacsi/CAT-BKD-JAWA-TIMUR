@@ -15,7 +15,7 @@ class CreateUjiansTable extends Migration
     {
         Schema::create('ujians', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('soal',500);
+            $table->string('soal',1000);
             $table->integer('user_id')->reference('id')->on('users');
             $table->string('jawaban',500);
             $table->string('kunci',500);

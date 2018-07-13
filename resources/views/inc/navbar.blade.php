@@ -13,11 +13,8 @@
                         &nbsp;
                     </ul>
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="{{ url('/home') }}">Home <span class="sr-only">(current)</span></a>
-                        </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">About Us</a>
+                          <a class="nav-link" href="{{ url('/ujian') }}">Ujian <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
 

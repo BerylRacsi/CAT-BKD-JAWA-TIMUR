@@ -19,7 +19,7 @@
   <link href="/css/sb-admin.css" rel="stylesheet">
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <a class="navbar-brand" href="{{ url ('/') }}"><b>CAT-BKD</b> Admin</a>
