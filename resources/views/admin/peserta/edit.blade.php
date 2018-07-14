@@ -12,16 +12,16 @@
   <div class="card-body">
     {!! Form::open(['action' => ['PesertaController@update',$user->id],'method' => 'POST']) !!}
       <div class="form-group">
-        {{Form::label('id','ID')}}
-        {{Form::text('id',$user->id,['class' => 'form-control','placeholder' => 'ID'])}}
+        <div class="col-6">
+          {{Form::label('name','Nama Peserta')}}
+          {{Form::text('name',$user->name,['class' => 'form-control','placeholder' => 'Nama Peserta' , 'required'])}}
+        </div>
       </div>
       <div class="form-group">
-        {{Form::label('name','Nama Peserta')}}
-        {{Form::text('name',$user->name,['class' => 'form-control','placeholder' => 'Nama Peserta'])}}
-      </div>
-      <div class="form-group">
-        {{Form::label('email','Email Peserta')}}
-        {{Form::text('email',$user->email,['class' => 'form-control','placeholder' => 'Email Peserta'])}}
+        <div class="col-6">
+          {{Form::label('email','Email Peserta')}}
+          {{Form::email('email',$user->email,['class' => 'form-control','placeholder' => 'Email Peserta' , 'required'])}}
+        </div>
       </div>
       <br>
       {{Form::hidden('_method','PUT')}} 

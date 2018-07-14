@@ -16,22 +16,20 @@
           {{Form::label('name' , 'Nama Peserta')}}
           {{Form::text('name', '' , ['class' => 'form-control' , 'placeholder' => 'Nama Peserta' , 'required'])}}
           @if ($errors->has('name'))
-          <br>
-          <span class="help-block">
-            <strong>{{ $errors->first('name') }}</strong>
-          </span>
+            <div class="btn btn-danger btn-block disabled">
+              {{ $errors->first('name') }}
+            </div>
           @endif
         </div>
       </div>
       <div class="form-group row{{ $errors->has('email') ? ' has-error' : '' }}">
         <div class="col-5">
           {{Form::label('email' , 'Email Peserta')}}
-          {{Form::text('email' , '' ,['class' => 'form-control' , 'placeholder' => 'Email Peserta' , 'required'])}}
+          {{Form::email('email' , '' ,['class' => 'form-control' , 'placeholder' => 'Email Peserta' , 'required'])}}
           @if ($errors->has('email'))
-          <br>
-          <span class="help-block">
-            <strong>{{ $errors->first('email') }}</strong>
-          </span>
+            <div class="btn btn-danger btn-block disabled">
+              {{ $errors->first('email') }}
+            </div>
           @endif
         </div>
       </div>
@@ -39,13 +37,12 @@
         <div class="col-5">
           {{Form::label('password' , 'Password')}}
           {{Form::text('password' , '' ,['class' => 'form-control','placeholder' => 'Password Peserta' , 'required'])}}
-        </div>
         @if ($errors->has('password'))
-        <br>
-        <span class="help-block">
-          <strong>{{ $errors->first('password') }}</strong>
-        </span>
+          <div class="btn btn-danger btn-block disabled">
+            {{ $errors->first('password') }}
+          </div>
         @endif
+        </div>
       </div>
       <br>
       <center>

@@ -30,7 +30,7 @@
       @for ($j=1; $j<=5;$j++)
         <div class="btn-group mr-2" role="group" aria-label="First group" style="margin-left: 5px; margin-bottom: 5px;" >
             <a href="{{ url('/ujian/'.$nomor_soal) }}" class="btn btn-sm btn<?php
-            if($array[($nomor_soal-1)+100] == '0')
+            if($jawaban[($nomor_soal-1)] == '0')
             {
                 echo '-outline';
                 $kosong++;
@@ -83,7 +83,7 @@
         {!! Form::open(['action' => ['UjianController@update',$nomor_sekarang],'method' => 'POST']) !!}
           <div class="radio">
             <label><input type="radio" name="optradio" value="A"
-              @if ($jawaban == 'A')
+              @if ($jawaban[$nomor_sekarang-1] == 'A')
                 @php
                 echo 'checked';
                 @endphp
@@ -92,7 +92,7 @@
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="B"
-              @if ($jawaban == 'B')
+              @if ($jawaban[$nomor_sekarang-1] == 'B')
                 @php
                 echo 'checked';
                 @endphp
@@ -101,7 +101,7 @@
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="C"
-              @if ($jawaban == 'C')
+              @if ($jawaban[$nomor_sekarang-1] == 'C')
                 @php
                 echo 'checked';
                 @endphp
@@ -110,7 +110,7 @@
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="D"
-              @if ($jawaban == 'D')
+              @if ($jawaban[$nomor_sekarang-1] == 'D')
                 @php
                 echo 'checked';
                 @endphp
@@ -119,7 +119,7 @@
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="E"
-              @if ($jawaban == 'E')
+              @if ($jawaban[$nomor_sekarang-1] == 'E')
                 @php
                 echo 'checked';
                 @endphp

@@ -16,7 +16,7 @@
   <div class="card-body">
     <h5 class="card-title">Identitas Peserta</h5>
     <div class="row" style="padding-left: 2em;">
-      <div class="col-3">
+      <div class="col-4">
         <ul class="list-unstyled text-left" style="font-weight: 500;">
           <li>Nama</li>
           <li>Alamat Email</li>
@@ -28,7 +28,7 @@
           <li>:</li>
         </ul>
       </div>
-      <div class="col-8">
+      <div class="col-7">
         <ul class="list-unstyled text-left">
           <li>{{Auth::user()->name}}</li>
           <li>{{Auth::user()->email}}</li>
@@ -39,24 +39,24 @@
   <div class="card-body">
     <h5 class="card-title">Keterangan Ujian</h5>
     <div class="row" style="padding-left: 2em;">
-      <div class="col-3">
+      <div class="col-4">
         <ul class="list-unstyled text-left" style="font-weight: 500;">
-{{--           <li>Soal Terjawab</li>
-          <li>Soal Kosong</li> --}}
+          <li>Soal Terjawab</li>
+          <li>Soal Kosong</li>
           <li>Sisa Waktu</li>
         </ul>
       </div>
       <div class="col-1">
         <ul class="list-unstyled text-left" style="font-weight: 500;">
-{{--           <li>:</li>
-          <li>:</li> --}}
+          <li>:</li>
+          <li>:</li>
           <li>:</li>
         </ul>
       </div>
-      <div class="col-8">
+      <div class="col-7">
         <ul class="list-unstyled text-left">
-{{--           <li>5</li>
-          <li>95</li> --}}
+          <li>{{100-$jawaban_kosong}}</li>
+          <li>{{$jawaban_kosong}}</li>
           <li><p id="demo"></p></li>
         </ul>
       </div>

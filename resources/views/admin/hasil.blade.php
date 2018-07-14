@@ -12,7 +12,7 @@
   <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Hasil Ujian CAT</div>
+          <i class="fa fa-table"></i> Daftar Hasil Ujian CAT</div>
         <div class="card-body">
         @if(count($hasils)>0)
           @php
@@ -24,8 +24,8 @@
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
-                  <th>Nilai TWK</th>
                   <th>Nilai TIU</th>
+                  <th>Nilai TWK</th>
                   <th>Nilai TKP</th>
                   <th>Nilai Total</th>
                   <th>Waktu Selesai Ujian</th>
@@ -36,8 +36,8 @@
                 <tr>
                   <td>{{$no += 1}}</td>
                   <td>{{$hasil->user->name}}</td>
-                  <td>{{$hasil->nilaitwk}}</td>
                   <td>{{$hasil->nilaitiu}}</td>
+                  <td>{{$hasil->nilaitwk}}</td>
                   <td>{{$hasil->nilaitkp}}</td>
                   <td>{{ $hasil->nilaitwk + $hasil->nilaitiu + $hasil->nilaitkp }}</td>
                   <td>{{ $hasil->created_at }}</td>
@@ -47,7 +47,6 @@
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Diupdate yesterday at 11:59 PM</div>
         @else
         <h5 class="text-center">Tidak ada hasil ujian</h5>
       </div>

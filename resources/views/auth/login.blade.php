@@ -17,9 +17,9 @@
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Masukkan Alamat Email" required autofocus>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
+                                    <div class="btn btn-danger btn-block disabled">
+                                            {{ $errors->first('email') }}
+                                    </div>
                                 @endif
                             </div>
                         </div>
@@ -31,9 +31,9 @@
                                 <input id="password" type="password" class="form-control" name="password" placeholder=" Masukkan Password" required>
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
+                                    <div class="btn btn-danger btn-block disabled">
+                                        {{ $errors->first('password') }}
+                                    </div>
                                 @endif
                             </div>
                         </div>

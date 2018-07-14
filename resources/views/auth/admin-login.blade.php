@@ -14,7 +14,6 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.login.submit') }}">
                         {{ csrf_field() }}
-
                         <div class="row form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             {{-- <label for="email" class="col-md-4 col-form-label">E-Mail Address</label> --}}
 
@@ -22,9 +21,9 @@
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-mail Address" required autofocus>
 
                                 @if ($errors->has('email'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                </span>
+                                    <div class="btn btn-danger btn-block disabled">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </div>
                                 @endif
                             </div>
                         </div>
@@ -36,9 +35,9 @@
                                 <input id="password" type="password" class="form-control" name="password" placeholder="Password" required>
 
                                 @if ($errors->has('password'))
-                                    <span class="help-block">
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                </span>
+                                    <div class="btn btn-danger btn-block disabled">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </div>
                                 @endif
                             </div>
                         </div>

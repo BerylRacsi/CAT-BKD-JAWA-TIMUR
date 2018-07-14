@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Hasil;
 use App\User;
 use App\Ujian;
+use App\Soal;
 
 class AdminController extends Controller
 {
@@ -25,18 +26,23 @@ class AdminController extends Controller
      */
     public function index()
     {   
-        return view('admin.index');
+        $users = User::count();
+        $soals = Soal::count();
+        $hasils = Hasil::count();
+        $ujians = Ujian::count();
+
+        return view('admin.index',compact('users', 'soals', 'hasils', 'ujians'));
     }
     public function hasil()
     {
         $hasils = Hasil::all();
-        //dd($hasils);
+
         return view('admin.hasil',compact('hasils'));
     }
     public function live()
     {
-        $ujian = Ujian::all();
+        $ujians = Ujian::all();
 
-        return view('admin.live');
+        return view('admin.live',compact('ujians'));
     }
 }

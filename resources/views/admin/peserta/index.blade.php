@@ -29,7 +29,7 @@
                   <th>No</th>
                   <th>Nama</th>
                   <th>Email</th>
-                  <th>Tgl Daftar</th>
+                  <th>Waktu Daftar</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -41,7 +41,7 @@
                   <td>{{$user->email}}</td>
                   <td>{{$user->created_at}}</td>
                   <td>
-                    <a type="button" class="btn btn-warning btn-sm btn-block" href="/admin/peserta/{{$user->id}}/edit">Edit</a>
+                    <a class="btn btn-warning btn-sm btn-block" href="/admin/peserta/{{$user->id}}/edit">Edit</a>
                     {!!Form::open(['action' => ['PesertaController@destroy',$user->id],'method' => 'POST']) !!}
                         {{Form::hidden('_method','DELETE')}}
                         {{Form::submit('Delete',['class' => 'btn btn-danger btn-sm btn-block'])}}
@@ -54,7 +54,7 @@
           </div>
         </div>
         @else
-        <h5 class="text-center">Tidak ada peserta</h5>
+        <h5 class="text-center">Tidak ada peserta, tekan tombol Tambah Peserta untuk menambah peserta</h5>
       </div>
     @endif
 @endsection
