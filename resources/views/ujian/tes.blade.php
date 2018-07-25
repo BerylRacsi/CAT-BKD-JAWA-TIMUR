@@ -65,7 +65,8 @@
     <div class="card text-left">
         <div class="card-body">
           <h5 class="card-title">Soal No. {{$nomor_sekarang}}</h5>
-          <p class="card-text">Kategori : {{$soals->kategori}}</p>
+          <p class="card-text">Jenis : {{$soals->jenis->jenis}}</p>
+          <p class="card-text">Bidang : {{$soals->bidang->bidang}} - {{$soals->subbidang->subbidang}}</p>
         </div>
     </div>
     <br>

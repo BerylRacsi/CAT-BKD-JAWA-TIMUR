@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/home','PagesController@index');
-
-//Route::get('/start','PagesController@start');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -37,7 +33,11 @@ Route::prefix('admin')->group(function() {
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
     Route::get('hasil', 'AdminController@hasil')->name('admin.hasil');
     Route::get('live', 'AdminController@live')->name('admin.live');
-    Route::resource('peserta','PesertaController');
+    Route::get('/soal/jsonbidang','SoalController@JSONbidang');
+    Route::get('/soal/jsonsubbidang','SoalController@JSONsubbidang');
+    Route::get('/soal/{id}/jsonbidang','SoalController@JSONbidang');
+    Route::get('/soal/{id}/jsonsubbidang','SoalController@JSONsubbidang');
     Route::resource('soal','SoalController');
+    Route::resource('peserta','PesertaController');
 
 });

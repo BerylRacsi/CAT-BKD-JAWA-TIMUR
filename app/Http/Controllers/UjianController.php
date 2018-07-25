@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ujian;
 use App\User;
 use App\Soal;
+use App\Aturan;
 use Auth;
 use DateTime;
 use App\Hasil;
@@ -94,12 +95,204 @@ class UjianController extends Controller
       }
 
         // Assign random question id for each category
-      $idtiu = Soal::select('id','jawaban')->where('kategori','=','TIU')->inRandomOrder()->take(30)->get();
-      $idtwk = Soal::select('id','jawaban')->where('kategori','=','TWK')->inRandomOrder()->take(35)->get();
-      $idtkp = Soal::select('id','jawaban')->where('kategori','=','TKP')->inRandomOrder()->take(35)->get();
+      $soal = Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',1)->where('subbidang_id',1)->where('kesulitan_id',2)->inRandomOrder()->take(5)->get();
 
-        // Merge into single collection of "random question id"
-      $soal = $idtiu->merge($idtwk)->merge($idtkp);
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',1)->where('subbidang_id',2)->where('kesulitan_id',2)->inRandomOrder()->take(4)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',1)->where('subbidang_id',3)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',1)->where('subbidang_id',4)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',2)->where('subbidang_id',5)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',2)->where('subbidang_id',6)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',2)->where('subbidang_id',7)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',3)->where('subbidang_id',8)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',1)->where('bidang_id',3)->where('subbidang_id',9)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',4)->where('subbidang_id',10)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',4)->where('subbidang_id',11)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',4)->where('subbidang_id',12)->where('kesulitan_id',2)->inRandomOrder()->take(2)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',4)->where('subbidang_id',13)->where('kesulitan_id',2)->inRandomOrder()->take(2)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',14)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',15)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',16)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',17)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',18)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',19)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',20)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',5)->where('subbidang_id',21)->where('kesulitan_id',2)->inRandomOrder()->take(2)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',6)->where('subbidang_id',23)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',6)->where('subbidang_id',25)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',6)->where('subbidang_id',26)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',6)->where('subbidang_id',27)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',6)->where('subbidang_id',28)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',6)->where('subbidang_id',29)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',7)->where('subbidang_id',30)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',7)->where('subbidang_id',31)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',7)->where('subbidang_id',32)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',7)->where('subbidang_id',33)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',8)->where('subbidang_id',34)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',8)->where('subbidang_id',35)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',8)->where('subbidang_id',36)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',9)->where('subbidang_id',37)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',9)->where('subbidang_id',38)->where('kesulitan_id',2)->inRandomOrder()->take(2)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',9)->where('subbidang_id',39)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',9)->where('subbidang_id',40)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',9)->where('subbidang_id',41)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',2)->where('bidang_id',9)->where('subbidang_id',42)->where('kesulitan_id',2)->inRandomOrder()->take(1)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',10)->where('subbidang_id',43)->where('kesulitan_id',2)->inRandomOrder()->take(6)->get());
+
+      $soal = $soal->merge($idtambah);
+
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',10)->where('subbidang_id',44)->where('kesulitan_id',2)->inRandomOrder()->take(5)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',11)->where('subbidang_id',45)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',11)->where('subbidang_id',46)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',12)->where('subbidang_id',47)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',12)->where('subbidang_id',48)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',13)->where('subbidang_id',49)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',13)->where('subbidang_id',50)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',14)->where('subbidang_id',51)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
+
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',14)->where('subbidang_id',52)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+
+      $soal = $soal->merge($idtambah);
 
         // Convert collection of "random question id" and "kunci" into string separated by comma
       $id_soal = $soal->implode('id',',');

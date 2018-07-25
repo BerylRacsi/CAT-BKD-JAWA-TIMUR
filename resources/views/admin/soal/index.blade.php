@@ -11,8 +11,9 @@
 
       <div class="card mb-3">
         <div class="card-header">
-          <a class="btn btn-success float-right btn-sm" href="{{ url('/admin/soal/create') }}"><i class="fa fa-plus-circle"></i> Tambah Soal</a>
-          <i class="fa fa-table"></i> Daftar Soal Ujian CAT</div>
+          <i class="fa fa-table"></i> Daftar Soal Ujian CAT
+          <a class="btn btn-success btn-sm float-right" href="{{ route('soal.create') }}"><i class="fa fa-plus-circle"></i> Tambah Soal</a>
+        </div>
         <div class="card-body">
       
         @if(count($soals)>0)
@@ -26,10 +27,10 @@
                 <tr>
                   <th>No</th>
                   <th>Deskripsi</th>
-                  <th>Kategori</th>
-                  <th>Sub</th>
+                  <th>Jenis</th>
+                  <th>Bidang</th>
+                  <th>Subbidang</th>
                   <th>Kesulitan</th>
-                  <th>Kunci</th>
                   <th>File Gambar</th>
                   <th>Aksi</th>
                 </tr>
@@ -39,10 +40,10 @@
                 <tr>
                   <td>{{$no += 1}}</td>
                   <td>{{$soal->deskripsi}}</td>
-                  <td>{{$soal->kategori}}</td>
-                  <td>{{$soal->subkategori}}</td>
-                  <td>{{$soal->kesulitan}}</td>
-                  <td>{{$soal->jawaban}}</td>
+                  <td>{{$soal->jenis->jenis}}</td>
+                  <td>{{$soal->bidang['bidang']}}</td>
+                  <td>{{$soal->subbidang->subbidang}}</td>
+                  <td>{{$soal->kesulitan->kesulitan}}</td>
                   <td>{{$soal->image}}</td>
                   <td>
                     <a class="btn btn-sm btn-primary btn-block" href="/admin/soal/{{$soal->id}}">Lihat</a>

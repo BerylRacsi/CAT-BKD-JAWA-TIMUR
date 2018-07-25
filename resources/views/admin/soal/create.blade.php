@@ -12,19 +12,35 @@
 	<div class="card-body">
 		{!! Form::open(['action' => 'SoalController@store' , 'method' => 'POST' , 'enctype' => 'multipart/form-data'])!!}
 			<div class="form-group">
-				{{Form::label('kategori' , 'Kategori')}}
+				{{Form::label('jenis' , 'Jenis')}}
 				<br>					
-				{{Form::select('kategori' , ['TWK' => 'Tes Wawasan Kebangsaan' , 'TIU' => 'Tes Intelegensi Umum' , 'TKP' => 'Tes Karakteristik Pribadi'],null, array('class' => 'btn btn-light dropdown-toggle' , 'id'=>'kategori'))}}
+				<select class="btn btn-light dropdown-toggle" id="jenis" name="jenis">
+					<option value="0" disabled selected>===Pilih Jenis===</option>
+					@foreach($jenis as $key => $value)
+					<option value="{{$key}}">{{$value}}</option>
+					@endforeach
+				</select>
 			</div>
 			<div class="form-group">
-				{{Form::label('subkategori' , 'Sub-Kategori')}}
-				<br>					
-				{{Form::select('subkategori' , ['Kat1' => 'Sub-Kategori 1' , 'Kat2' => 'Sub-Kategori 2' , 'Kat3' => 'Sub-Kategori 3' , 'Kat4' => 'Sub-Kategori 4' , 'Kat5' => 'Sub-Kategori 5'],null, array('class' => 'btn btn-light dropdown-toggle' , 'id'=>'subkategori'))}}
+				{{Form::label('bidang' , 'Bidang')}}
+				<br>
+				<select class="btn btn-light dropdown-toggle" id="bidang" name="bidang">
+					<option value="0" disabled selected>===Pilih Bidang===</option>
+				</select>
+			</div>
+			<div class="form-group">
+				{{Form::label('subbidang' , 'Sub-Bidang')}}
+				<br>
+				<select class="btn btn-light dropdown-toggle" id="subbidang" name="subbidang">
+					<option value="0" disabled selected>===Pilih Sub-Bidang===</option>
+				</select>
 			</div>
 			<div class="form-group">
 				{{Form::label('kesulitan' , 'Kesulitan')}}
-				<br>					
-				{{Form::select('kesulitan' , ['Mudah' => 'Mudah' , 'Sedang' => 'Sedang' , 'Sulit' => 'Sulit'],null, array('class' => 'btn btn-light dropdown-toggle' , 'id'=>'kesulitan'))}}
+				<br>
+				<select class="btn btn-light dropdown-toggle" id="subbidang" name="kesulitan">
+					<option value="2" selected="selected">B : Sedang</option>
+				</select>
 			</div>
 			<div class="form-group">
 				{{Form::label('deskripsi' , 'Deskripsi')}}
@@ -141,64 +157,93 @@
 			</center>
 		{!! Form::close() !!}
 	</div>
+
 </div>
 
+@endsection
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+@section('jscript')
+
 <script type="text/javascript">
-	$('select').on('change' , function()
-	{
-	    var x = document.getElementById("tkpdiv");
-		if((this.value) == "TKP")
-		{
-		    if (x.style.display === "none") {
-		        x.style.display = "block";
-		    } 	
+  var kunci1,kunci2,kunci3,kunci4,kunci5,kuncitkp; 
+  if (kunci1 == undefined || kunci2 == undefined || kunci3 == undefined || kunci4 == undefined || kunci5 == undefined) { 
+    kunci1 = "-"; 
+    kunci2 = "-"; 
+    kunci3 = "-"; 
+    kunci4 = "-"; 
+    kunci5 = "-"; 
+  } 
+    function setKunci1(){ 
+      kunci1 = document.getElementById('kunci1').value; 
+    var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5); 
+  document.getElementById("demo").value = kuncitkp; 
+    }
+    function setKunci2(){ 
+      kunci2 = document.getElementById('kunci2').value; 
+      var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5); 
+  document.getElementById("demo").value = kuncitkp; 
+    }
+    function setKunci3(){ 
+      kunci3 = document.getElementById('kunci3').value; 
+      var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5); 
+  document.getElementById("demo").value = kuncitkp; 
+    }
+    function setKunci4(){ 
+      kunci4 = document.getElementById('kunci4').value; 
+      var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5); 
+  document.getElementById("demo").value = kuncitkp; 
+    } 
+    function setKunci5(){ 
+      kunci5 = document.getElementById('kunci5').value; 
+		  var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5); 
+	  document.getElementById("demo").value = kuncitkp; 
 		}
-		else if ((this.value) == "TIU" || (this.value) == "TWK")
-		{
-			x.style.display = "none";
-		}	
-		
+</script>
+
+<script type="text/javascript">
+	$('#jenis').on('change',function(e){
+
+		var x = document.getElementById("tkpdiv");
+		var jenis_id = e.target.value;
+
+		if((jenis_id) == 3) 
+    { 
+        if (x.style.display === "none") { 
+            x.style.display = "block"; 
+        }    
+    } 
+    else if ((jenis_id) == 1 || (jenis_id) == 2) 
+    { 
+      x.style.display = "none"; 
+    }
+
+		console.log(e);
+		$.get('jsonbidang?jenis_id=' + jenis_id, function(data){
+			console.log(data);
+			$('#bidang').empty();
+			$('#bidang').append('<option value="0" disabled selected>===Pilih Bidang===</option>');
+
+			$('#subbidang').empty();
+			$('#subbidang').append('<option value="0" disabled selected>===Pilih Sub-Bidang===</option>');
+
+			$.each(data, function(index, bidangObj){
+				$('#bidang').append('<option value="'+ bidangObj.id +'">'+ bidangObj.bidang +'</option>');
+			})
+		});
+	});
+
+	$('#bidang').on('change',function(e){
+		var bidang_id = e.target.value;
+		console.log(e);
+		$.get('jsonsubbidang?bidang_id=' + bidang_id, function(data){
+			console.log(data);
+			$('#subbidang').empty();
+			$('#subbidang').append('<option value="0" disabled selected>===Pilih Sub-Bidang===</option>');
+
+			$.each(data, function(index, subbidangObj){
+				$('#subbidang').append('<option value="'+ subbidangObj.id +'">'+ subbidangObj.subbidang +'</option>');
+			})
+		});
 	});
 </script>
-
-<script type="text/javascript">
-	var kunci1,kunci2,kunci3,kunci4,kunci5,kuncitkp;
-	if (kunci1 == undefined || kunci2 == undefined || kunci3 == undefined || kunci4 == undefined || kunci5 == undefined) {
-		kunci1 = "-";
-		kunci2 = "-";
-		kunci3 = "-";
-		kunci4 = "-";
-		kunci5 = "-";
-	}
-	
-    function setKunci1(){
-      kunci1 = document.getElementById('kunci1').value;
-    var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5);
-	document.getElementById("demo").value = kuncitkp;
-    }
-    function setKunci2(){
-      kunci2 = document.getElementById('kunci2').value;
-    	var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5);
-	document.getElementById("demo").value = kuncitkp;
-    }
-    function setKunci3(){
-      kunci3 = document.getElementById('kunci3').value;
-      var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5);
-	document.getElementById("demo").value = kuncitkp;
-    }
-    function setKunci4(){
-      kunci4 = document.getElementById('kunci4').value;
-      var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5);
-	document.getElementById("demo").value = kuncitkp;
-    }
-    function setKunci5(){
-      kunci5 = document.getElementById('kunci5').value;
-	var kuncitkp = kunci1.concat(kunci2,kunci3,kunci4,kunci5);
-	document.getElementById("demo").value = kuncitkp;
-    	
-    }
-</script>
-
 @endsection

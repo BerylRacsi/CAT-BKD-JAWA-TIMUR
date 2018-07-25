@@ -11,25 +11,42 @@ class SoalsTWKseeder extends Seeder
      */
     public function run()
     {
-      for ($i=0; $i < 50; $i++) { 
-          $array_diacak = array("Kat1","Kat2","Kat3","Kat4", "Kat5");
-          $rand_key = array_rand($array_diacak,1);
-          $subkategori = $array_diacak[$rand_key];
 
-          $array_diacak = array("Mudah","Sedang","Sulit");
-          $rand_key = array_rand($array_diacak,1);
-          $kesulitan = $array_diacak[$rand_key];
+      $bidang_id_array = array(4, 5, 6, 7, 8, 9);
 
-          $array_diacak = array("B","C","D","A","E");
-          $rand_key = array_rand($array_diacak,1);
-          $jawaban = $array_diacak[$rand_key];
+      $j = 10;
+
+      for ($i=0 ; $i < 33 ; $i++) { 
+
+        $subbidang_id_array[$i] = $j;
+
+        $j++;
+
+      }
+
+      for ($i=0; $i < 1000; $i++) { 
+          
+          $rand_key = array_rand($bidang_id_array,1);
+          $bidang_id = $bidang_id_array[$rand_key];
+
+          $rand_key = array_rand($subbidang_id_array,1);
+          $subbidang_id = $subbidang_id_array[$rand_key];
+
+          // $kesulitan_id_array = array(1 , 2 , 3);
+          // $rand_key = array_rand($kesulitan_id_array,1);
+          // $kesulitan = $kesulitan_id_array[$rand_key];
+
+          $jawaban = array("B","C","D","A","E");
+          $rand_key = array_rand($jawaban,1);
+          $jawaban = $jawaban[$rand_key];
 
         DB::table('soals')->insert([
 
           'deskripsi' => str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10).' '.str_random(5).' '.str_random(10),
-          'kategori' => 'TWK',
-          'subkategori' => $subkategori,
-          'kesulitan' => $kesulitan,
+          'jenis_id' => 2,
+          'bidang_id' => $bidang_id,
+          'subbidang_id' => $subbidang_id,
+          'kesulitan_id' => 2,
           'opsi1' => str_random(7),
           'opsi2' => str_random(7),
           'opsi3' => str_random(7),

@@ -3,28 +3,50 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\Soal;
+use App\Bidang;
+use App\Subbidang;
+use App\Jenis;
+use App\Kesulitan;
 use Storage;
 use DB;
 
 class SoalController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+    public function JSONbidang()
+    {
+        $jenis_id = Input::get('jenis_id');
+        $bidangs = Bidang::where('jenis_id',$jenis_id)->get();
+
+        return response()->json($bidangs);
+    }
+
+    public function JSONsubbidang()
+    {
+        $bidang_id = Input::get('bidang_id');
+        $subbidangs = Subbidang::where('bidang_id',$bidang_id)->get();
+
+        return response()->json($subbidangs);
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth:admin');
-    }
     public function index()
     {
         $soals = Soal::all();
-        //return view('admin.index')->with('soals',$soals);
+
         return view('admin.soal.index',compact('soals'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -32,8 +54,10 @@ class SoalController extends Controller
      */
     public function create()
     {
+        $jenis = Jenis::pluck('jenis','id');
+        $kesulitans = Kesulitan::pluck('kesulitan','id')->toarray();
         
-        return view('admin.soal.create');
+        return view('admin.soal.create',compact('jenis','kesulitans'));
     }
 
     /**
@@ -78,9 +102,10 @@ class SoalController extends Controller
 
         $soal = new Soal;
         $soal->deskripsi = $request->input('deskripsi');
-        $soal->kategori = $request->input('kategori');
-        $soal->subkategori = $request->input('subkategori');
-        $soal->kesulitan = $request->input('kesulitan');
+        $soal->jenis_id = $request->input('jenis');
+        $soal->bidang_id = $request->input('bidang');
+        $soal->subbidang_id = $request->input('subbidang');
+        $soal->kesulitan_id = $request->input('kesulitan');
         $soal->opsi1 = $request->input('opsi1');
         $soal->opsi2 = $request->input('opsi2');
         $soal->opsi3 = $request->input('opsi3');
@@ -115,7 +140,13 @@ class SoalController extends Controller
     public function edit($id)
     {
         $soal = Soal::find($id);
-        return view('admin.soal.edit',compact('soal'));
+        $jenis = Jenis::pluck('jenis','id')->toarray();
+        $bidangs = Bidang::where('jenis_id',$soal->jenis_id)->get();
+        $subbidangs = Subbidang::where('bidang_id',$soal->bidang_id)->get();
+        // dd($subbidangs);
+        $kesulitans = Kesulitan::pluck('kesulitan','id')->toarray();
+
+        return view('admin.soal.edit',compact('soal','jenis','bidangs','subbidangs','kesulitans'));
     }
 
     /**
@@ -152,9 +183,10 @@ class SoalController extends Controller
 
         $soal = Soal::find($id);
         $soal->deskripsi = $request->input('deskripsi');
-        $soal->kategori = $request->input('kategori');
-        $soal->subkategori = $request->input('subkategori');
-        $soal->kesulitan = $request->input('kesulitan');
+        $soal->jenis_id = $request->input('jenis');
+        $soal->bidang_id = $request->input('bidang');
+        $soal->subbidang_id = $request->input('subbidang');
+        $soal->kesulitan_id = $request->input('kesulitan');
         $soal->opsi1 = $request->input('opsi1');
         $soal->opsi2 = $request->input('opsi2');
         $soal->opsi3 = $request->input('opsi3');

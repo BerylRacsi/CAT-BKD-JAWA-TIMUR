@@ -111,6 +111,7 @@ var x = setInterval(function() {
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("demo").innerHTML = "WAKTU HABIS";
+        $('form').submit();
     }
 }, 1000);
 </script>
