@@ -42,12 +42,12 @@
                   for ($i = 0; $i < 100 ; $i++) { 
                     if ($i < 30) {
                       if ($jawaban_user[$i] == $kunci[$i]){
-                        $twk+=5;
+                        $tiu+=5;
                       } 
                     }
                     else if ($i > 29 && $i < 65) {
                       if ($jawaban_user[$i] == $kunci[$i]){
-                        $tiu+=5;
+                        $twk+=5;
                       }
                     }
                     else if ($i > 64 && $i < 100) {

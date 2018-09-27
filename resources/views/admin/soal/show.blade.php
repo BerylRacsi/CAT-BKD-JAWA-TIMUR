@@ -30,8 +30,8 @@
         <div class="card text-left">
             <div class="card-body">
               <h5 class="card-title">Soal No. {{$soals->id}}</h5>
-              <p class="card-text">Kategori : {{$soals->kategori}}</p>
-              <p class="card-text">Sub-Kategori : {{$soals->subkategori}}</p>
+              <p class="card-text">Jenis : {{$soals->jenis->jenis}}</p>
+              <p class="card-text">Bidang: {{$soals->bidang->bidang}} - {{$soals->subbidang->subbidang}}</p>
             </div>
         </div>
         <br>
@@ -49,25 +49,23 @@
               @php
               echo $soals->deskripsi;
               @endphp</p>
-
+			
+				<div class="radio"> <label><input type="radio" name="optradio" value="A"> A. {{strip_tags($soals->opsi1)}}</label>
+              </div>
               <div class="radio">
-                <label><input type="radio" name="optradio" value="A"> A. {{$soals->opsi1}}
+                <label><input type="radio" name="optradio" value="B"> B. {{strip_tags($soals->opsi2)}}
                 </label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio" value="B"> B. {{$soals->opsi2}}
+                <label><input type="radio" name="optradio" value="C"> C. {{strip_tags($soals->opsi3)}}
                 </label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio" value="C"> C. {{$soals->opsi3}}
+                <label><input type="radio" name="optradio" value="D"> D. {{strip_tags($soals->opsi4)}}
                 </label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio" value="D"> D. {{$soals->opsi4}}
-                </label>
-              </div>
-              <div class="radio">
-                <label><input type="radio" name="optradio" value="E"> E. {{$soals->opsi5}}
+                <label><input type="radio" name="optradio" value="E"> E. {{strip_tags($soals->opsi5)}}
                 </label>
               </div>
           </div>{{-- End of card body --}}

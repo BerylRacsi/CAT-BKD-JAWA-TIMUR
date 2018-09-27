@@ -50,29 +50,29 @@
 			  <div class="row">
 			    <div class="col">
 			    	{{Form::label('opsi1' , 'Pilihan Jawaban A')}}
-			    	{{Form::text('opsi1' , '' , ['class' => 'form-control' , 'placeholder' => 'Jawaban A' , 'required'])}}
+			    	{{Form::textarea('opsi1' , '' , ['id'=>'article-ckeditor1','class' => 'form-control' , 'placeholder' => 'Jawaban A' , 'required'])}}
 			    </div>
 			    <div class="col">
 			    	{{Form::label('opsi2' , 'Pilihan Jawaban B')}}
-			    	{{Form::text('opsi2' , '' , ['class' => 'form-control' , 'placeholder' => 'Jawaban B' , 'required'])}}
+			    	{{Form::textarea('opsi2' , '' , ['id'=>'article-ckeditor2','class' => 'form-control' , 'placeholder' => 'Jawaban B' , 'required'])}}
 			    </div>
 			    <div class="w-100">
 			    	<br>
 			    </div>
 			    <div class="col">
 			    	{{Form::label('opsi3' , 'Pilihan Jawaban C')}}
-			    	{{Form::text('opsi3' , '' , ['class' => 'form-control' , 'placeholder' => 'Jawaban C' , 'required'])}}
+			    	{{Form::textarea('opsi3' , '' , ['id'=>'article-ckeditor3','class' => 'form-control' , 'placeholder' => 'Jawaban C' , 'required'])}}
 			    </div>
 			    <div class="col">
 			    	{{Form::label('opsi4' , 'Pilihan Jawaban D')}}
-			    	{{Form::text('opsi4' , '' , ['class' => 'form-control' , 'placeholder' => 'Jawaban D' , 'required'])}}
+			    	{{Form::textarea('opsi4' , '' , ['id'=>'article-ckeditor4','class' => 'form-control' , 'placeholder' => 'Jawaban D' , 'required'])}}
 			    </div>
 			  </div>
 			  <br>
 			  <center>
 			  	<div class="col-6">
 			    	{{Form::label('opsi5' , 'Pilihan Jawaban E')}}
-			    	{{Form::text('opsi5' , '' , ['class' => 'form-control' , 'placeholder' => 'Jawaban E' , 'required'])}}
+			    	{{Form::textarea('opsi5' , '' , ['id'=>'article-ckeditor5','class' => 'form-control' , 'placeholder' => 'Jawaban E' , 'required'])}}
 			    </div>
 			  </center>
 			</div>

@@ -8,7 +8,7 @@
 
       <main role="main" class="inner cover">
         <h1 >Selamat Datang di CAT BKD</h1>
-        <p class="lead">Computer Assisted Test ini dipersembahkan oleh Badan Kepegawaian Daerah Jawa Timur bagi masyarakat yang ingin mencoba simulasi tes CPNS secara online dengan bank soal yang terbaru.</p><br>
+        <p class="lead">Computer Assisted Test ini dipersembahkan oleh Badan Kepegawaian Daerah Jawa Timur bagi masyarakat yang ingin mencoba simulasi Tes Kompetensi Dasar (TKD) secara online dengan bank soal yang terbaru.</p><br>
         @if(Auth::guest())
         <p class="lead">
           <a href="{{ route('login') }}" class="btn btn-lg btn-outline-primary mr-sm-1">Sign in</a>

@@ -290,7 +290,7 @@ class UjianController extends Controller
 
       $soal = $soal->merge($idtambah);
 
-      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',14)->where('subbidang_id',52)->where('kesulitan_id',2)->inRandomOrder()->take(3)->get());
+      $idtambah = (Soal::select('id','jawaban')->where('jenis_id',3)->where('bidang_id',14)->where('subbidang_id',52)->where('kesulitan_id',2)->inRandomOrder()->take(6)->get());
 
       $soal = $soal->merge($idtambah);
 
@@ -420,12 +420,12 @@ class UjianController extends Controller
       for ($i = 0; $i < 100 ; $i++) { 
           if ($i < 30) {
             if ($jawaban_user[$i] == $kunci[$i]){
-                $twk+=5;
+                $tiu+=5;
             } 
           }
           else if ($i > 29 && $i < 65) {
             if ($jawaban_user[$i] == $kunci[$i]){
-                $tiu+=5;
+                $twk+=5;
             }
           }
           else if ($i > 64 && $i < 100) {

@@ -93,7 +93,16 @@
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
+		 </script>
+	<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script>
+		CKEDITOR.replace( 'article-ckeditor1' );
+		CKEDITOR.replace( 'article-ckeditor2' );
+		CKEDITOR.replace( 'article-ckeditor3' );
+		CKEDITOR.replace( 'article-ckeditor4' );
+		CKEDITOR.replace( 'article-ckeditor5' );
     </script>
+   
     @yield('jscript')
   </div>
 </body>

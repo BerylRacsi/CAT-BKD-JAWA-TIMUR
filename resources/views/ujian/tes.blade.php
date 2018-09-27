@@ -80,7 +80,7 @@
 
     <div class="card text-left">
       <div class="card-body">
-        <p class="card-text">{{$soals->deskripsi}}</p>
+        <p class="card-text">{{strip_tags($soals->deskripsi)}}</p>
         {!! Form::open(['action' => ['UjianController@update',$nomor_sekarang],'method' => 'POST']) !!}
           <div class="radio">
             <label><input type="radio" name="optradio" value="A"
@@ -89,7 +89,7 @@
                 echo 'checked';
                 @endphp
               @endif
-              > A. {{$soals->opsi1}}</label>
+              > A. {{strip_tags($soals->opsi1)}}</label>
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="B"
@@ -98,7 +98,7 @@
                 echo 'checked';
                 @endphp
               @endif
-              > B. {{$soals->opsi2}}</label>
+              > B. {{strip_tags($soals->opsi2)}}</label>
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="C"
@@ -107,7 +107,7 @@
                 echo 'checked';
                 @endphp
               @endif
-              > C. {{$soals->opsi3}}</label>
+              > C. {{strip_tags($soals->opsi3)}}</label>
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="D"
@@ -116,7 +116,7 @@
                 echo 'checked';
                 @endphp
               @endif
-              > D. {{$soals->opsi4}}</label>
+              > D. {{strip_tags($soals->opsi4)}}</label>
           </div>
           <div class="radio">
             <label><input type="radio" name="optradio" value="E"
@@ -125,7 +125,7 @@
                 echo 'checked';
                 @endphp
               @endif
-              > E. {{$soals->opsi5}}</label>
+              > E. {{strip_tags($soals->opsi5)}}</label>
           </div>
           {{Form::hidden('_method','PUT')}}
         {!! Form::close() !!}

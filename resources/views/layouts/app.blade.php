@@ -34,7 +34,7 @@
 
     <footer class="footer">
         <div class="container text-center">
-          <span class="text-bold">Perencanaan Pengadaan Pengolahan Data & SI - BKD &copy 2018</span>
+          <span class="text-bold">Bidang Perencanaan,Pengadaan,Pengolahan Data dan Sistem Informasi - BKD &copy 2018</span>
         </div>
     </footer>
 
