@@ -13,8 +13,10 @@
         <div class="card-header">
           <i class="fa fa-table"></i> Daftar Soal Ujian CAT
           <a class="btn btn-success btn-sm float-right" href="{{ route('soal.create') }}"><i class="fa fa-plus-circle"></i> Tambah Soal</a>
+          <!--<a class="btn btn-success btn-sm float-right" href="{{ route('admin.soal.rekap') }}"><i class="fa fa-plus-circle"></i> Rekap Soal</a>-->
+
         </div>
-        <div class="card-body">
+       <div class="card-body">
       
         @if(count($soals)>0)
           @php
@@ -39,7 +41,7 @@
                 @foreach($soals as $soal)
                 <tr>
                   <td>{{$no += 1}}</td>
-                  <td>{{$soal->deskripsi}}</td>
+                  <td>{{strip_tags($soal->deskripsi)}}</td>
                   <td>{{$soal->jenis->jenis}}</td>
                   <td>{{$soal->bidang['bidang']}}</td>
                   <td>{{$soal->subbidang->subbidang}}</td>

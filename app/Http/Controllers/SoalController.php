@@ -19,6 +19,11 @@ class SoalController extends Controller
         $this->middleware('auth:admin');
     }
 
+    public function rekap()
+    {
+        return view('admin.soal.rekap');
+    }
+
     public function JSONbidang()
     {
         $jenis_id = Input::get('jenis_id');

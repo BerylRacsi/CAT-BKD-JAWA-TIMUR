@@ -16,6 +16,7 @@
             <span class="nav-link-text">Soal</span>
           </a>
         </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Hasil">
           <a class="nav-link" href="{{ route('admin.hasil') }}">
             <i class="fa fa-fw fa-list-ol"></i>

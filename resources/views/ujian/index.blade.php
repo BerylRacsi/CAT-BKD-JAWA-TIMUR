@@ -19,7 +19,8 @@
               <div class="col-3">
                 <ul class="list-unstyled text-left" style="font-weight: 500;">
                   <li>Nama</li>
-                  <li>Alamat Email</li>
+                  <!--<li>NIPTT-PK</li>-->
+				   <li>Email</li>
                 </ul>
               </div>
               <div class="col-1">

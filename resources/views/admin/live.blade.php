@@ -22,6 +22,7 @@
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
+				  <th>NIP/NIP PTTPK</th>
                   <th>Nilai TIU</th>
                   <th>Nilai TWK</th>
                   <th>Nilai TKP</th>
@@ -56,7 +57,12 @@
                       {
                         if($jawaban_user[$i] == $kunci_tkp[$j])
                         {
-                          $tkp+=($j+1);
+                           if($j==0){$tkp+=5;}
+                           else if($j==1){$tkp+=4;}
+                           else if($j==2){$tkp+=3;}
+                           else if($j==3){$tkp+=2;}
+                           else if($j==4){$tkp+=1;}
+                          
                         }
                       }    
                     }
@@ -68,6 +74,7 @@
                 <tr>
                   <td>{{$no += 1}}</td>
                   <td>{{$ujian->user->name}}</td>
+				  <td>{{$ujian->user->email}}</td>
                   <td>{{$ujian->tiu}}</td>
                   <td>{{$ujian->twk}}</td>
                   <td>{{$ujian->tkp}}</td>

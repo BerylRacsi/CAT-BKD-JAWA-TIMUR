@@ -82,7 +82,7 @@
 			<div id="tkpdiv" style="display: none;">
 			<center>
 			<label>Pilihan Kunci TKP</label><br>
-			<label for="kunci1">Kunci 1 (Skor 1)</label>
+			<label for="kunci1">Kunci 1 (Skor 5)</label>
 		    <select name="kunci1" id="kunci1" onchange="setKunci1()" class="btn btn-light dropdown-toggle">
 		        <option value="" disabled="" selected="" style="display:none;">Pilih Jawaban</option>
 		        <option value="A">A</option>
@@ -92,7 +92,7 @@
 		        <option value="E">E</option>
 		    </select>
 		    <br>
-		    <label for="kunci2">Kunci 2 (Skor 2)</label>
+		    <label for="kunci2">Kunci 2 (Skor 4)</label>
 		    <select name="kunci2" id="kunci2" onchange="setKunci2()" class="btn btn-light dropdown-toggle">
 		        <option value="" disabled="" selected="" style="display:none;">Pilih Jawaban</option>
 		        <option value="A">A</option>
@@ -112,7 +112,7 @@
 		        <option value="E">E</option>
 		    </select>
 		    <br>
-		    <label for="kunci4">Kunci 4 (Skor 4)</label>
+		    <label for="kunci4">Kunci 4 (Skor 2)</label>
 		    <select name="kunci4" id="kunci4" onchange="setKunci4()" class="btn btn-light dropdown-toggle">
 		        <option value="" disabled="" selected="" style="display:none;">Pilih Jawaban</option>
 		        <option value="A">A</option>
@@ -122,7 +122,7 @@
 		        <option value="E">E</option>
 		    </select>
 		    <br>
-		    <label for="kunci5">Kunci 5 (Skor 5)</label>
+		    <label for="kunci5">Kunci 5 (Skor 1)</label>
 		    <select name="kunci5" id="kunci5" onchange="setKunci5()" class="btn btn-light dropdown-toggle">
 		        <option value="" disabled="" selected="" style="display:none;">Pilih Jawaban</option>
 		        <option value="A">A</option>

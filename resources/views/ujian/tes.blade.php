@@ -135,10 +135,10 @@
     <br>
     <center>
       <a href="/ujian/{{$nomor_sekarang-1}}" class="btn btn-outline-secondary mr-3 <?php 
-      if($nomor_sekarang==1)echo 'disabled'?>" style="font-weight: 500;"><i class="fa fa-chevron-circle-left"></i> Sebelumnya</a>
+      if($nomor_sekarang==1)echo 'disabled'?>" style="font-weight: 500;"><i class="fa fa-chevron-circle-left"></i> Soal Sebelumnya</a>
 
       <a href="/ujian/{{$nomor_sekarang+1}}" class="btn btn-outline-secondary ml-3 <?php 
-      if($nomor_sekarang==100)echo 'disabled'?>" style="font-weight: 500;">Selanjutnya <i class="fa fa-chevron-circle-right"></i></a>
+      if($nomor_sekarang==100)echo 'disabled'?>" style="font-weight: 500;">Lewati Soal <i class="fa fa-chevron-circle-right"></i></a>
     </center>
   </div>{{-- End of kolom kanan col-8 --}}
 </div>

@@ -401,7 +401,12 @@ class UjianController extends Controller
      */
     public function destroy($id)
     { /*  When user click Akhiri Ujian button do save hasil and delet ujian record  */
-
+	$count=Ujian::where('user_id','=',$id)->count();
+	
+	if($count==0)
+	{
+		return redirect('ujian/hasil');
+	}
         // Get user ujian data
       $ujian = Ujian::where('user_id','=',$id)->first();
 
@@ -434,8 +439,14 @@ class UjianController extends Controller
             for ($j = 0; $j < 5; $j++)
             {
                 if($jawaban_user[$i] == $kunci_tkp[$j])
-                {
-                    $tkp+=($j+1);
+                {  
+                  if($j==0){$tkp+=5;}
+                 else if($j==1){$tkp+=4;}
+                 else if($j==2){$tkp+=3;}
+                 else if($j==3){$tkp+=2;}
+                 else if($j==4){$tkp+=1;}
+                  //  $tkp+=1;
+                  //$tkp+=($j+1);
                 }
             }    
           }
